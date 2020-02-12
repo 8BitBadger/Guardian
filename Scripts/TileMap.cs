@@ -9,7 +9,7 @@ public class TileMap : Godot.TileMap
     public override void _Ready()
     {
         //Connect to the input Manager
-        GetNode<Node2D>("InputManager").Connect("mouseClicked", this, nameof(CheckTileClicked));
+        GetNode<Node2D>("/InputManager").Connect("mouseClicked", this, nameof(CheckTileClicked));
     }
 
     private void CheckTileClicked(Vector2 tilePos)
