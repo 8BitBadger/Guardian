@@ -3,6 +3,10 @@ using System;
 
 public class TileMap : Godot.TileMap
 {
+//The tile size of the map
+int mapSize = 20;
+//The tile data for the tile map
+TileData[,] Tiles = New TileData
     //The refeference for the map scenes TileMap script
     TileMap mapScript;
     //Grab mouse clikced signal from the input manager, might need to assign input manager tot a node 2D in the main scnene itself
