@@ -11,12 +11,15 @@ public class CameraControl : Camera2D
     public override void _Ready()
     {
         //Connect to the input Manager
-        GetNode<Node2D>("../InputManager").Connect("mouseClicked", this, nameof(CheckTileClicked));
+        GetNode<Node2D>("../InputManager").Connect("mouseClicked", this, nameof(MouseReleased));
     }
+    private void MouseReleased()
+    {
 
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
+    }
+    //  // Called every frame. 'delta' is the elapsed time since the previous frame.
+    //  public override void _Process(float delta)
+    //  {
+    //      
+    //  }
 }
