@@ -13,7 +13,7 @@ public class CameraControl : Camera2D
         //Connect to the input Manager
         GetNode<Node2D>("../InputManager").Connect("mouseClicked", this, nameof(MouseReleased));
     }
-    private void MouseReleased()
+    private void MouseReleased(Vector2 mousePos)
     {
 
     }
