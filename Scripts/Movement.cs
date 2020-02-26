@@ -4,7 +4,7 @@ using System;
 public class Movement : KinematicBody2D
 {
 
-    [Export] public int speed = 200;    
+    [Export] public int speed = 200;
     public Vector2 velocity = new Vector2();
     public override void _Ready()
     {
@@ -24,26 +24,18 @@ public class Movement : KinematicBody2D
 
         if (Input.IsActionPressed("down"))
             velocity.y += 1;
-if (Input.IsActionPressed("up"))
+        if (Input.IsActionPressed("up"))
             velocity.y -= 1;
-
-        
-
-        
     }
-
     private void UpPressed()
     {
-
-        
     }
-
     public override void _PhysicsProcess(float delta)
     {
         GetInput();
         velocity = velocity.Normalized() * speed;
         //Rotation = velocity.Angle();
-        if(velocity != Vector2.Zero) Rotation = Mathf.LerpAngle(Rotation, velocity.Angle(), 0.2f);
+        if (velocity != Vector2.Zero) Rotation = Mathf.LerpAngle(Rotation, velocity.Angle(), 0.2f);
         velocity = MoveAndSlide(velocity);
     }
 }
