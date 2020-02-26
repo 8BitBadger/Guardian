@@ -5,9 +5,15 @@ public class InputManager : Node2D
 {
     //Outgoing signals for the input handler
     [Signal]
-    delegate void mouseClicked(Vector2 clickPos);
+    delegate void leftMouseClicked(Vector2 clickPos);
     [Signal]
-    delegate void mouseReleased(Vector2 releasePos);
+    delegate void leftMouseReleased(Vector2 releasePos);
+    [Signal]
+    delegate void rightMouseClicked(Vector2 clickPos);
+    [Signal]
+    delegate void rightMouseReleased(Vector2 releasePos);
+        [Signal]
+    delegate void upPressed();
     public override void _Input(InputEvent @event)
     {
         //If the mouse wa clicked
@@ -15,27 +21,27 @@ public class InputManager : Node2D
         {
             if (@event.IsActionPressed("leftMouseButton"))
             {
-                GD.Print("leftMouseButton pressed");
                 Vector2 mousePos = GetGlobalMousePosition();
-                EmitSignal(nameof(mouseClicked), mousePos);
+                EmitSignal(nameof(leftMouseClicked), mousePos);
             }
-            if(@event.IsActionReleased("leftMouseButton"))
+            if (@event.IsActionReleased("leftMouseButton"))
             {
-                GD.Print("leftMouseButton relesed");
-                 Vector2 mousePos = GetGlobalMousePosition();
-                EmitSignal(nameof(mouseReleased), mousePos);
-            }
-                        if (@event.IsActionPressed("rightMouseButton"))
-            {
-                GD.Print("rightMouseButton pressed");
                 Vector2 mousePos = GetGlobalMousePosition();
-                EmitSignal(nameof(mouseClicked), mousePos);
+                EmitSignal(nameof(leftMouseReleased), mousePos);
             }
-            if(@event.IsActionReleased("rightMouseButton"))
+            if (@event.IsActionPressed("rightMouseButton"))
             {
-                GD.Print("rightMouseButton relesed");
-                 Vector2 mousePos = GetGlobalMousePosition();
-                EmitSignal(nameof(mouseReleased), mousePos);
+                Vector2 mousePos = GetGlobalMousePosition();
+                EmitSignal(nameof(rightMouseClicked), mousePos);
+            }
+            if (@event.IsActionReleased("rightMouseButton"))
+            {
+                Vector2 mousePos = GetGlobalMousePosition();
+                EmitSignal(nameof(rightMouseReleased), mousePos);
+            }
+            if (@event.IsActionPressed("up"))
+            {
+                EmitSignal(nameof(upPressed));
             }
         }
     }

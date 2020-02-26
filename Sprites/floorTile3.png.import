@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/LogginCabin.png-3a48281fe74e58f690f2fc1b33636d53.stex"
+path="res://.import/floorTile3.png-cb48ad1c8351f6d4321545c35534718d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/LogginCabin.png"
-dest_files=[ "res://.import/LogginCabin.png-3a48281fe74e58f690f2fc1b33636d53.stex" ]
+source_file="res://Sprites/floorTile3.png"
+dest_files=[ "res://.import/floorTile3.png-cb48ad1c8351f6d4321545c35534718d.stex" ]
 
 [params]
 

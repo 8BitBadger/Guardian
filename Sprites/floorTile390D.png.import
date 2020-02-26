@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Trees.png-007d3f3d49d6cca5b1cb6a10845fe0d5.stex"
+path="res://.import/floorTile390D.png-0464c45157968dc7e8dcbe0a5a5d6247.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Trees.png"
-dest_files=[ "res://.import/Trees.png-007d3f3d49d6cca5b1cb6a10845fe0d5.stex" ]
+source_file="res://Sprites/floorTile390D.png"
+dest_files=[ "res://.import/floorTile390D.png-0464c45157968dc7e8dcbe0a5a5d6247.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

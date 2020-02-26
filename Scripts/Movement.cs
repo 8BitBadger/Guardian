@@ -1,0 +1,49 @@
+using Godot;
+using System;
+
+public class Movement : KinematicBody2D
+{
+
+    [Export] public int speed = 200;    
+    public Vector2 velocity = new Vector2();
+    public override void _Ready()
+    {
+        //Connect to the input Manager
+        GetNode<Node2D>("../InputManager").Connect("upPressed", this, nameof(UpPressed));
+    }
+
+    public void GetInput()
+    {
+        velocity = new Vector2();
+
+        if (Input.IsActionPressed("right"))
+            velocity.x += 1;
+
+        if (Input.IsActionPressed("left"))
+            velocity.x -= 1;
+
+        if (Input.IsActionPressed("down"))
+            velocity.y += 1;
+if (Input.IsActionPressed("up"))
+            velocity.y -= 1;
+
+        
+
+        
+    }
+
+    private void UpPressed()
+    {
+
+        
+    }
+
+    public override void _PhysicsProcess(float delta)
+    {
+        GetInput();
+        velocity = velocity.Normalized() * speed;
+        //Rotation = velocity.Angle();
+        if(velocity != Vector2.Zero) Rotation = Mathf.LerpAngle(Rotation, velocity.Angle(), 0.2f);
+        velocity = MoveAndSlide(velocity);
+    }
+}

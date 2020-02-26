@@ -18,8 +18,8 @@ public class Map : Node2D
         //Grab a refference to the tile map node
         tileMap = GetNode<TileMap>("TileMap");
         //Connect to the input Manager
-        GetNode<Node2D>("../InputManager").Connect("mouseClicked", this, nameof(CheckTileClicked));
-        //
+        GetNode<Node2D>("../InputManager").Connect("leftMouseClicked", this, nameof(CheckTileClicked));
+        //Initialize the tile data for every entry in the array
         InitMap();
         //Init test of the tile map generation
         GenerateMap();

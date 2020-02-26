@@ -1,0 +1,9 @@
+[gd_scene format=2]
+
+[node name="SmallTank" type="KinematicBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Tank" type="Sprite" parent="."]
+
+[node name="Gun" type="Sprite" parent="Tank"]
