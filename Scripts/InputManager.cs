@@ -5,15 +5,22 @@ public class InputManager : Node2D
 {
     //Outgoing signals for the input handler
     [Signal]
-    delegate void leftMouseClicked(Vector2 clickPos);
+    delegate void leftMouseClicked();
     [Signal]
-    delegate void leftMouseReleased(Vector2 releasePos);
+    delegate void leftMouseReleased();
     [Signal]
-    delegate void rightMouseClicked(Vector2 clickPos);
+    delegate void rightMouseClicked();
     [Signal]
-    delegate void rightMouseReleased(Vector2 releasePos);
-        [Signal]
+    delegate void rightMouseReleased();
+    [Signal]
     delegate void upPressed();
+    [Signal]
+    delegate void downPressed();
+    [Signal]
+    delegate void leftPressed();
+    [Signal]
+    delegate void rightPressed();
+
     public override void _Input(InputEvent @event)
     {
         //If the mouse wa clicked
@@ -22,26 +29,38 @@ public class InputManager : Node2D
             if (@event.IsActionPressed("leftMouseButton"))
             {
                 Vector2 mousePos = GetGlobalMousePosition();
-                EmitSignal(nameof(leftMouseClicked), mousePos);
+                EmitSignal(nameof(leftMouseClicked));
             }
             if (@event.IsActionReleased("leftMouseButton"))
             {
                 Vector2 mousePos = GetGlobalMousePosition();
-                EmitSignal(nameof(leftMouseReleased), mousePos);
+                EmitSignal(nameof(leftMouseReleased));
             }
             if (@event.IsActionPressed("rightMouseButton"))
             {
                 Vector2 mousePos = GetGlobalMousePosition();
-                EmitSignal(nameof(rightMouseClicked), mousePos);
+                EmitSignal(nameof(rightMouseClicked));
             }
             if (@event.IsActionReleased("rightMouseButton"))
             {
                 Vector2 mousePos = GetGlobalMousePosition();
-                EmitSignal(nameof(rightMouseReleased), mousePos);
+                EmitSignal(nameof(rightMouseReleased));
             }
             if (@event.IsActionPressed("up"))
             {
                 EmitSignal(nameof(upPressed));
+            }
+            if (@event.IsActionPressed("down"))
+            {
+                EmitSignal(nameof(downPressed));
+            }
+            if (@event.IsActionPressed("left"))
+            {
+                EmitSignal(nameof(leftPressed));
+            }
+            if (@event.IsActionPressed("right"))
+            {
+                EmitSignal(nameof(rightPressed));
             }
         }
     }

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/m_10.png-a663f0c8d41aaf7fda2ac1ca4b7a7d2f.stex"
+path="res://.import/MisslePod.png-ea18cf5b0c229ad318b10a41d5908ca9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/muzzle_flashs/m_10.png"
-dest_files=[ "res://.import/m_10.png-a663f0c8d41aaf7fda2ac1ca4b7a7d2f.stex" ]
+source_file="res://Sprites/MisslePod.png"
+dest_files=[ "res://.import/MisslePod.png-ea18cf5b0c229ad318b10a41d5908ca9.stex" ]
 
 [params]
 

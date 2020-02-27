@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Sprites/MisslePod.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/TankBody2.png" type="Texture" id=2]
+
+[node name="SmallTank" type="KinematicBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Tank" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+region_rect = Rect2( 64, 0, 64, 64 )
+
+[node name="Gun" type="Sprite" parent="Tank"]
+texture = ExtResource( 1 )

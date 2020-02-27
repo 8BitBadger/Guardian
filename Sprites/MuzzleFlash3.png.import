@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/m_3.png-7955f235bb9e5a1e04060d82518e0037.stex"
+path="res://.import/MuzzleFlash3.png-e3f30ef2a86d9da028a82cd7c3d7d29b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/muzzle_flashs/m_3.png"
-dest_files=[ "res://.import/m_3.png-7955f235bb9e5a1e04060d82518e0037.stex" ]
+source_file="res://Sprites/MuzzleFlash3.png"
+dest_files=[ "res://.import/MuzzleFlash3.png-e3f30ef2a86d9da028a82cd7c3d7d29b.stex" ]
 
 [params]
 

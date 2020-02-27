@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/m_6.png-5119dfc2eaed7051ad88dea8f062e248.stex"
+path="res://.import/TankBody2.png-69acfb1143e26ca1e9bb9a3330c48691.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/muzzle_flashs/m_6.png"
-dest_files=[ "res://.import/m_6.png-5119dfc2eaed7051ad88dea8f062e248.stex" ]
+source_file="res://Sprites/TankBody2.png"
+dest_files=[ "res://.import/TankBody2.png-69acfb1143e26ca1e9bb9a3330c48691.stex" ]
 
 [params]
 

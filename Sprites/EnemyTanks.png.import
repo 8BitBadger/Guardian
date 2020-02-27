@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/m_14.png-755a9d23ec31a22cea240641e4815f8d.stex"
+path="res://.import/EnemyTanks.png-cfa3b7dd0e483ada96b3bac9de30f244.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/muzzle_flashs/m_14.png"
-dest_files=[ "res://.import/m_14.png-755a9d23ec31a22cea240641e4815f8d.stex" ]
+source_file="res://Sprites/EnemyTanks.png"
+dest_files=[ "res://.import/EnemyTanks.png-cfa3b7dd0e483ada96b3bac9de30f244.stex" ]
 
 [params]
 

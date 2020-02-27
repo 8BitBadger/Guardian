@@ -15,29 +15,29 @@
 texture = ExtResource( 1 )
 
 [node name="FlameTile" type="Sprite" parent="."]
-position = Vector2( 136, 0 )
+position = Vector2( 72, 0 )
 texture = ExtResource( 2 )
 
 [node name="WallTile1" type="Sprite" parent="."]
-position = Vector2( 272, 0 )
+position = Vector2( 144, 0 )
 texture = ExtResource( 4 )
 
 [node name="WallTile190D" type="Sprite" parent="."]
-position = Vector2( 272, 136 )
+position = Vector2( 144, 72 )
 texture = ExtResource( 8 )
 
 [node name="WallTile20D" type="Sprite" parent="."]
-position = Vector2( 408, 0 )
+position = Vector2( 216, 0 )
 texture = ExtResource( 3 )
 
 [node name="WallTile290D" type="Sprite" parent="."]
-position = Vector2( 408, 136 )
+position = Vector2( 216, 72 )
 texture = ExtResource( 5 )
 
 [node name="WallTile2180D" type="Sprite" parent="."]
-position = Vector2( 408, 272 )
+position = Vector2( 216, 144 )
 texture = ExtResource( 6 )
 
 [node name="WallTile2270D" type="Sprite" parent="."]
-position = Vector2( 408, 408 )
+position = Vector2( 216, 216 )
 texture = ExtResource( 7 )
