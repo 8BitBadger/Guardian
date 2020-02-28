@@ -56,6 +56,17 @@ right={
  ]
 }
 
+[layer_names]
+
+2d_render/layer_1="GFX"
+2d_physics/layer_1="Tiles"
+2d_render/layer_2="Units"
+2d_physics/layer_2="Items"
+2d_render/layer_3="Items"
+2d_physics/layer_3="Units"
+2d_render/layer_4="Objects"
+2d_render/layer_5="Tiles"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"

@@ -57,6 +57,7 @@
     <Compile Include="Scripts\AIMovement.cs" />
     <Compile Include="Scripts\CameraControl.cs" />
     <Compile Include="Scripts\Gun.cs" />
+    <Compile Include="Scripts\Health.cs" />
     <Compile Include="Scripts\InputManager.cs" />
     <Compile Include="Scripts\Main.cs" />
     <Compile Include="Scripts\Map.cs" />
