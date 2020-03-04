@@ -18,10 +18,8 @@ public class Movement : KinematicBody2D
 
         if (Input.IsActionPressed("right"))
             velocity.x += 1;
-
         if (Input.IsActionPressed("left"))
             velocity.x -= 1;
-
         if (Input.IsActionPressed("down"))
             velocity.y += 1;
         if (Input.IsActionPressed("up"))

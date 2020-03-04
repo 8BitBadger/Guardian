@@ -4,13 +4,11 @@
 [ext_resource path="res://Sprites/TankBody2.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/AIMovement.cs" type="Script" id=3]
 [ext_resource path="res://Scripts/Health.cs" type="Script" id=4]
+[ext_resource path="res://Sprites/MuzzleFlash2.png" type="Texture" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 15.9542
 height = 12.6735
-
-[sub_resource type="CircleShape2D" id=2]
-radius = 290.597
 
 [node name="SmallTank" type="KinematicBody2D" groups=[
 "Enemies",
@@ -33,13 +31,10 @@ region_rect = Rect2( 64, 0, 64, 64 )
 texture = ExtResource( 1 )
 
 [node name="MuzzleFlash" type="Sprite" parent="TankBody/Gun"]
+visible = false
+position = Vector2( 25.7854, 0 )
+texture = ExtResource( 5 )
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource( 1 )
-
-[node name="DetectionArea" type="Area2D" parent="."]
-
-[node name="Range" type="CollisionShape2D" parent="DetectionArea"]
-position = Vector2( -1, 0 )
-shape = SubResource( 2 )
