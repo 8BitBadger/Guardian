@@ -15,7 +15,7 @@ public class AIMovement : KinematicBody2D
     int speed = 20;
     //Signal to send to the health script attached to the player
     [Signal]
-    delegate void Hit(String targetName, String attackerName);
+    public delegate void Hit(String targetName, String attackerName);
     //The current state of the AI used for behaviour, for now very low level
     AIStates myState;
     Sprite gunSprite, muzzleFlash;
@@ -167,7 +167,7 @@ public class AIMovement : KinematicBody2D
             if (hits.Contains("collider"))
             {
                 Node2D collNode = (Node2D)hits["collider"];
-                string targetName = collNode.Name;
+                String targetName = collNode.Name;
                 GD.Print("Targets name = " + targetName);
                 EmitSignal(nameof(Hit), targetName, GetParent().Name);
             }

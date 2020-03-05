@@ -4,8 +4,7 @@ using System;
 public class Shoot : Node2D
 {
     [Signal]
-    delegate void Hit(String targetName, String attackerName);
-
+    public delegate void Hit(String targetName, String attackerName);
     //Refference to tanks KinematicBody2D
     KinematicBody2D tankBody;
     //Used to show the bullet path when the gun is fired
@@ -55,9 +54,9 @@ public class Shoot : Node2D
             //hitPos = (Vector2)hits["position"];
             if (hits.Contains("collider"))
             {
-                Godot.Object coll = (Godot.Object)hits["collider"];
-                ulong TargetID = coll.GetInstanceId();
-                EmitSignal(nameof(Hit),((Node2D)coll).Name, GetParent().Name);
+                Node2D targetName = (Node2D)hits["collider"];
+                //ulong TargetID = coll.GetInstanceId();
+                EmitSignal(nameof(Hit), targetName.Name, GetParent().Name);
             }
         }
         //Set the start and end of the line2D and then make it visible
