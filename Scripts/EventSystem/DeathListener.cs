@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using Godot;
 
-namespace EventCallbacks
+namespace EventCallback
 {
-    public class DeathListener : Node
+    public class DeathListener
     {
 
         // Use this for initialization
@@ -17,13 +17,6 @@ namespace EventCallbacks
         {
             UnitDeathEvent.UnregisterListener(OnUnitDied);
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
         void OnUnitDied(UnitDeathEvent unitDeath)
         {
             GD.Print("Alerted about unit death: " + unitDeath.UnitNode.Name);

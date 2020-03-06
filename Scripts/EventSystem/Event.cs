@@ -1,7 +1,7 @@
 ﻿using System;
 using Godot;
 
-namespace EventCallbacks
+namespace EventCallback
 {
     public abstract class Event<T> where T : Event<T>
     {
@@ -11,7 +11,6 @@ namespace EventCallbacks
          * for doing Debug.Log?
          */
         public string Description;
-
         private bool hasFired;
         public delegate void EventListener(T info);
         private static event EventListener listeners;
@@ -20,12 +19,10 @@ namespace EventCallbacks
         {
             listeners += listener;
         }
-
         public static void UnregisterListener(EventListener listener)
         {
             listeners -= listener;
         }
-
         public void FireEvent()
         {
             if (hasFired)
@@ -39,21 +36,8 @@ namespace EventCallbacks
             }
         }
     }
-
     public class DebugEvent : Event<DebugEvent>
     {
         public int VerbosityLevel;
-    }
-
-    public class UnitDeathEvent : Event<UnitDeathEvent>
-    {
-        public Node2D UnitNode;
-        /*
-
-        Info about cause of death, our killer, etc...
-
-        Could be a struct, readonly, etc...
-
-        */
     }
 }

@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using EventCallback;
 
 public enum AIStates
 {
@@ -49,11 +50,13 @@ public class AIMovement : KinematicBody2D
         //Grab the timer node for the muzzle flash
         GetNode<Timer>(flashTimer.Name).Connect("timeout", this, nameof(HideFlash));
         //Get this nodes health scripgt and init the conevtion
-        GetNode<Health>("Health").Connect("BeingAttacked", this, nameof(BeingAttacked));
+        //GetNode<Health>("Health").Connect("BeingAttacked", this, nameof(BeingAttacked));
 
-        gunSprite = GetNode<Sprite>("TankBody/Gun");
+        UnitHitEvent.RegisterListener(BeingAttacked);
 
-        muzzleFlash = GetNode<Sprite>("TankBody/Gun/MuzzleFlash");
+        gunSprite = (Sprite)FindNode("Gun");
+
+        muzzleFlash = (Sprite)FindNode("MuzzleFlash");
 
         myState = AIStates.MoveTo;
         //Set the defualt target to the crystal
@@ -168,14 +171,18 @@ public class AIMovement : KinematicBody2D
             {
                 Node2D collNode = (Node2D)hits["collider"];
                 String targetName = collNode.Name;
-                GD.Print("Targets name = " + targetName);
+                //GD.Print("Targets name = " + targetName);
                 EmitSignal(nameof(Hit), targetName, GetParent().Name);
             }
         }
 
     }
-    private void BeingAttacked(ulong attacker)
+    private void BeingAttacked(UnitHitEvent unitHit)
     {
+        if (this.Name == unitHit.target.Name)
+        {
+            target = unitHit.attacker;
+        }
 
     }
 
@@ -193,5 +200,10 @@ public class AIMovement : KinematicBody2D
     private void attackReset()
     {
         canAttack = true;
+    }
+
+    public override void _ExitTree()
+    {
+        UnitHitEvent.UnregisterListener(BeingAttacked);
     }
 }

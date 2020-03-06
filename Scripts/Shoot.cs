@@ -1,10 +1,8 @@
 using Godot;
 using System;
-
+using EventCallback;
 public class Shoot : Node2D
 {
-    [Signal]
-    public delegate void Hit(String targetName, String attackerName);
     //Refference to tanks KinematicBody2D
     KinematicBody2D tankBody;
     //Used to show the bullet path when the gun is fired
@@ -40,6 +38,7 @@ public class Shoot : Node2D
         tankBody = GetNode<KinematicBody2D>("../../../../Player");
         //Connect to the input manager to read the mouses click event
         GetNode<InputManager>("../../../../InputManager").Connect("leftMouseClicked", this, nameof(Fire));
+
     }
     private void Fire()
     {
@@ -50,13 +49,17 @@ public class Shoot : Node2D
         //Check if there was a hit
         if (hits.Count > 0)
         {
+            
             //Change the line2d end position if there was a hit
             //hitPos = (Vector2)hits["position"];
             if (hits.Contains("collider"))
             {
-                Node2D targetName = (Node2D)hits["collider"];
-                //ulong TargetID = coll.GetInstanceId();
-                EmitSignal(nameof(Hit), targetName.Name, GetParent().Name);
+                Node2D target = (Node2D)hits["collider"];
+                UnitHitEvent uhei = new UnitHitEvent();
+                uhei.attacker = (Node2D)GetParent();
+                uhei.target = (Node2D)hits["collider"];
+                uhei.Description = uhei.attacker.Name + " attacked " + uhei.target.Name;
+                uhei.FireEvent();
             }
         }
         //Set the start and end of the line2D and then make it visible

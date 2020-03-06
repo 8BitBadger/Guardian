@@ -24,4 +24,9 @@ public class Main : Node2D
     {
 
     }
+
+    public override void _ExitTree()
+    {
+       
+    }
 }
