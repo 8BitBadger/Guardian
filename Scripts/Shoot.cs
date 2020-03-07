@@ -8,7 +8,7 @@ public class Shoot : Node2D
     //Used to show the bullet path when the gun is fired
     //Line2D traceLine;
     //The position were the ray cast hit
-    Vector2 hitPos;
+    //Vector2 hitPos;
     //Timer used to time the flash of hte bullet
     //Timer traceTimer;
 
@@ -54,9 +54,8 @@ public class Shoot : Node2D
             //hitPos = (Vector2)hits["position"];
             if (hits.Contains("collider"))
             {
-                Node2D target = (Node2D)hits["collider"];
                 UnitHitEvent uhei = new UnitHitEvent();
-                uhei.attacker = (Node2D)GetParent();
+                uhei.attacker = (Node2D)Owner;
                 uhei.target = (Node2D)hits["collider"];
                 uhei.Description = uhei.attacker.Name + " attacked " + uhei.target.Name;
                 uhei.FireEvent();

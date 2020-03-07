@@ -5,11 +5,11 @@
 [ext_resource path="res://Sprites/City.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/Map.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scenes/SmallTank.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scripts/Health.cs" type="Script" id=7]
+[ext_resource path="res://Scripts/EnemySpawner.cs" type="Script" id=8]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 50, 50 )
+[sub_resource type="CircleShape2D" id=1]
+radius = 39.0187
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 2 )
@@ -20,12 +20,13 @@ script = ExtResource( 2 )
 script = ExtResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1280, 1140 )
 z_index = 1
 
 [node name="Crystal" type="KinematicBody2D" parent="." groups=[
 "Enemies",
 ]]
-position = Vector2( 900, 700 )
+position = Vector2( 1280, 1280 )
 z_index = 1
 collision_layer = 5
 collision_mask = 5
@@ -34,7 +35,7 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="TestDummyColShape2D" type="CollisionShape2D" parent="Crystal" groups=[
+[node name="CollShape" type="CollisionShape2D" parent="Crystal" groups=[
 "Enemies",
 ]]
 shape = SubResource( 1 )
@@ -42,11 +43,6 @@ shape = SubResource( 1 )
 [node name="Sprite" type="Sprite" parent="Crystal"]
 texture = ExtResource( 3 )
 
-[node name="SmallTank" parent="." instance=ExtResource( 6 )]
-light_mask = 2
-position = Vector2( 669, 359.181 )
-z_index = 1
-
-[node name="SmallTank2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 675, 162 )
-z_index = 1
+[node name="EnemySpawner" type="Node2D" parent="."]
+script = ExtResource( 8 )
+spawnPoints = PoolVector2Array( 128, 128, 1000, 128, 2400, 128, 128, 1250, 128, 2400, 1250, 2400, 2400, 2400, 2400, 1250 )

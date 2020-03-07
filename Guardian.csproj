@@ -56,8 +56,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scripts\AIMovement.cs" />
     <Compile Include="Scripts\CameraControl.cs" />
+    <Compile Include="Scripts\EnemySpawner.cs" />
+    <Compile Include="Scripts\EventSystem\HealthEvent.cs" />
+    <Compile Include="Scripts\EventSystem\LoseEvent.cs" />
     <Compile Include="Scripts\EventSystem\UnitDeathEvent.cs" />
     <Compile Include="Scripts\EventSystem\UnitHitEvent.cs" />
+    <Compile Include="Scripts\EventSystem\WinEvent.cs" />
     <Compile Include="Scripts\Gun.cs" />
     <Compile Include="Scripts\Health.cs" />
     <Compile Include="Scripts\InputManager.cs" />
@@ -69,6 +73,7 @@
     <Compile Include="Scripts\TileData.cs" />
     <Compile Include="Scripts\EventSystem\DeathListener.cs" />
     <Compile Include="Scripts\EventSystem\Event.cs" />
+    <Compile Include="Scripts\Trap.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

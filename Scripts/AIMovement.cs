@@ -13,7 +13,7 @@ public class AIMovement : KinematicBody2D
 {
     //The movemnt speed of the tank
     [Export]
-    int speed = 20;
+    int speed = 80;
     //Signal to send to the health script attached to the player
     [Signal]
     public delegate void Hit(String targetName, String attackerName);
@@ -148,7 +148,8 @@ public class AIMovement : KinematicBody2D
             Vector2 dir = target.Position - Position;
             //Normalizing direction for movement
             dir = dir.Normalized();
-            gunSprite.Rotation = Mathf.LerpAngle(gunSprite.Rotation, dir.Angle(), 0.2f);
+            //gunSprite.Rotation = Mathf.LerpAngle(gunSprite.Rotation, dir.Angle(), 0.2f);
+            gunSprite.LookAt(target.Position);
         }
 
         //If the attack timer has not run out yet we just return out of the method
@@ -169,10 +170,11 @@ public class AIMovement : KinematicBody2D
         {
             if (hits.Contains("collider"))
             {
-                Node2D collNode = (Node2D)hits["collider"];
-                String targetName = collNode.Name;
-                //GD.Print("Targets name = " + targetName);
-                EmitSignal(nameof(Hit), targetName, GetParent().Name);
+                UnitHitEvent uhei = new UnitHitEvent();
+                uhei.attacker = (Node2D)GetParent();
+                uhei.target = (Node2D)hits["collider"];
+                uhei.Description = uhei.attacker.Name + " attacked " + uhei.target.Name;
+                uhei.FireEvent();
             }
         }
 
@@ -181,7 +183,8 @@ public class AIMovement : KinematicBody2D
     {
         if (this.Name == unitHit.target.Name)
         {
-            target = unitHit.attacker;
+            GD.Print("AttackerName = " + unitHit.attacker.Name);
+            target = (Node2D)unitHit.attacker;
         }
 
     }

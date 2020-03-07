@@ -12,25 +12,6 @@ namespace EventCallback
         public override void _Ready()
         {
             UnitHitEvent.RegisterListener(OnHit);
-            //Connect to the players Hit emmit
-            //GetTree().GetNodesInGroup("Player");
-            //GetNode<Shoot>("../../Player/Body/Gun/BulletSpawnPoint").Connect("Hit", this, nameof(WasHit));
-            //Connection to the AIs Hit emmit
-            //GetNode<AIMovement>("../../SmallTank").Connect("Hit", this, nameof(WasHit));
-            //GetNode<AIMovement>("../../SmallTank2").Connect("Hit", this, nameof(WasHit));
-
-        }
-
-        public override void _Input(InputEvent @event)
-        {
-            //If the mouse wa clicked
-            if (@event is InputEventMouseButton)
-            {
-                if (@event.IsActionPressed("leftMouseButton"))
-                {
-                    Vector2 mousePos = GetGlobalMousePosition();
-                }
-            }
         }
         private void OnHit(UnitHitEvent unitHit)
         {
@@ -39,7 +20,11 @@ namespace EventCallback
                 //if(unitHit.target.GetScript().HasMethod("BeingAttacked")) unitHit.target.GetScript().BeingAttacked(unitHit.attacker);
                 //Reduce the enemy tank health with a fixed amount for now
                 health -= 10;
+                //Broadcast the health after it has been modified to anyone who is listening
                 GD.Print(this.GetParent().Name + " has " + health + " health");
+                HealthEvent hei = new HealthEvent();
+                hei.health = health;
+                hei.target = unitHit.target;
                 //Check if the health has gone down to zero
                 CheckHealth();
             }

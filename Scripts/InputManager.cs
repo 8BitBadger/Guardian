@@ -28,22 +28,18 @@ public class InputManager : Node2D
         {
             if (@event.IsActionPressed("leftMouseButton"))
             {
-                Vector2 mousePos = GetGlobalMousePosition();
                 EmitSignal(nameof(leftMouseClicked));
             }
             if (@event.IsActionReleased("leftMouseButton"))
             {
-                Vector2 mousePos = GetGlobalMousePosition();
                 EmitSignal(nameof(leftMouseReleased));
             }
             if (@event.IsActionPressed("rightMouseButton"))
             {
-                Vector2 mousePos = GetGlobalMousePosition();
                 EmitSignal(nameof(rightMouseClicked));
             }
             if (@event.IsActionReleased("rightMouseButton"))
             {
-                Vector2 mousePos = GetGlobalMousePosition();
                 EmitSignal(nameof(rightMouseReleased));
             }
             if (@event.IsActionPressed("up"))
