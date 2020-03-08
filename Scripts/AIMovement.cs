@@ -60,7 +60,7 @@ public class AIMovement : KinematicBody2D
 
         myState = AIStates.MoveTo;
         //Set the defualt target to the crystal
-        target = GetNode<Node2D>("../Crystal");
+        target = GetNode<Node2D>("../../Crystal");
 
         //Set the target to the dome by defualt so it goes and attacks it by defualt
     }
@@ -173,6 +173,7 @@ public class AIMovement : KinematicBody2D
                 UnitHitEvent uhei = new UnitHitEvent();
                 uhei.attacker = (Node2D)GetParent();
                 uhei.target = (Node2D)hits["collider"];
+                uhei.damage = 10;
                 uhei.Description = uhei.attacker.Name + " attacked " + uhei.target.Name;
                 uhei.FireEvent();
             }

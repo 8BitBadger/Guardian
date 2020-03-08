@@ -44,5 +44,6 @@ shape = SubResource( 1 )
 texture = ExtResource( 3 )
 
 [node name="EnemySpawner" type="Node2D" parent="."]
+z_index = 1
 script = ExtResource( 8 )
 spawnPoints = PoolVector2Array( 128, 128, 1000, 128, 2400, 128, 128, 1250, 128, 2400, 1250, 2400, 2400, 2400, 2400, 1250 )

@@ -21,28 +21,41 @@ public class EnemySpawner : Node2D
     public override void _Ready()
     {
         map = GetNode<TileMap>("../Map/TileMap");
-        enemyScenes.Add(ResourceLoader.Load("res://Scenes/SmallTank.tscn")as PackedScene);
-        enemyScenes.Add(ResourceLoader.Load("res://Scenes/LargeTank.tscn")as PackedScene);
-        trapScene = ResourceLoader.Load("res://Scenes/Trap.tscn")as PackedScene;
-        spawnWave();
+        enemyScenes.Add(ResourceLoader.Load("res://Scenes/SmallTank.tscn") as PackedScene);
+        enemyScenes.Add(ResourceLoader.Load("res://Scenes/LargeTank.tscn") as PackedScene);
+        trapScene = ResourceLoader.Load("res://Scenes/Trap.tscn") as PackedScene;
+        SetTraps();
+        SpawnWave();
     }
 
     private void SetTraps()
     {
-        GetNode("");
+        for (int y = 0; y < 80; y++)
+        {
+            for (int x = 0; x < 80; x++)
+            {
+                if (map.GetCell(x, y) == 0)
+                {
+                    Node tempNode = trapScene.Instance();
+                    ((Node2D)tempNode).Position = new Vector2(x * 64 + 32, y * 64 + 32);
+                    tempNode.Name = "Trap";
+                    AddChild(tempNode);
+                }
+            }
+        }
     }
 
-    private void spawnWave()
+    private void SpawnWave()
     {
         //Randomize the number set before we use it
         rng.Randomize();
         for (int i = 0; i < waveLevel * 1.35; i++)
         {
             Vector2 spawnLocation = spawnPoints[rng.RandiRange(0, spawnPoints.Length - 1)];
-            GD.Print("Enemies in list " + enemyScenes.Count);
-            GD.Print("Spawn points array length " + spawnPoints.Length);
             Node tempNode = enemyScenes[0].Instance();
-           
+            ((Node2D)tempNode).Position = spawnLocation;
+            AddChild(tempNode);
+
             //enemies[i].Position = spawnLocation;
             //enemies[i].Name = "enemy" + i; 
             //enemies.Add(tempNode);

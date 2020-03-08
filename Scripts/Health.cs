@@ -16,12 +16,12 @@ namespace EventCallback
         private void OnHit(UnitHitEvent unitHit)
         {
             if (GetParent().Name == unitHit.target.Name)
-            {
+            {   
                 //if(unitHit.target.GetScript().HasMethod("BeingAttacked")) unitHit.target.GetScript().BeingAttacked(unitHit.attacker);
                 //Reduce the enemy tank health with a fixed amount for now
-                health -= 10;
+                health -= unitHit.damage;
                 //Broadcast the health after it has been modified to anyone who is listening
-                GD.Print(this.GetParent().Name + " has " + health + " health");
+                GD.Print(unitHit.attacker.Name + " attacked " +  unitHit.target.Name + " and it has " + health + " health left");
                 HealthEvent hei = new HealthEvent();
                 hei.health = health;
                 hei.target = unitHit.target;

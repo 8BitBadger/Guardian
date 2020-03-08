@@ -57,6 +57,7 @@ public class Shoot : Node2D
                 UnitHitEvent uhei = new UnitHitEvent();
                 uhei.attacker = (Node2D)Owner;
                 uhei.target = (Node2D)hits["collider"];
+                uhei.damage = 50;
                 uhei.Description = uhei.attacker.Name + " attacked " + uhei.target.Name;
                 uhei.FireEvent();
             }

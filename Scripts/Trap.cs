@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using EventCallback;
 
 public class Trap : Node2D
 {
@@ -23,6 +24,7 @@ public class Trap : Node2D
         trapTimer.Start();
         //Connect to the timers time out in order to toggle the trap on or off
         GetNode<Timer>("OnOffTimer").Connect("timeout", this, nameof(ToggleTrap));
+        GetNode<Area2D>("Area2D").Connect("body_entered", this, nameof(BodyEntered));
     }
 
     private void ToggleTrap()
@@ -43,10 +45,13 @@ public class Trap : Node2D
         }
     }
 
-
-    //  // Called every frame. 'delta' is the elapsed time since the previous frame.
-    //  public override void _Process(float delta)
-    //  {
-    //      
-    //  }
+    private void BodyEntered(Node node)
+    {
+        UnitHitEvent uhei = new UnitHitEvent();
+        uhei.attacker = (Node2D)this;
+        uhei.target = (Node2D)node;
+        uhei.damage = 200;
+        uhei.Description = uhei.attacker.Name + " attacked " + uhei.target.Name;
+        uhei.FireEvent();
+    }
 }
