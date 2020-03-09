@@ -77,6 +77,8 @@
     <Compile Include="Scripts\EventSystem\DeathListener.cs" />
     <Compile Include="Scripts\EventSystem\Event.cs" />
     <Compile Include="Scripts\Trap.cs" />
+    <Compile Include="Scripts\UI.cs" />
+    <Compile Include="Scripts\UIControl.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

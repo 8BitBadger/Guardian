@@ -11,7 +11,7 @@ public class Menu : Node2D
     public override void _Ready()
     {
         //Grab the refference for the background sprite
-        background = GetNode<Sprite>("Background");
+        background = GetNode<Sprite>("../Background");
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
