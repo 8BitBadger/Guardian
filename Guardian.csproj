@@ -59,6 +59,7 @@
     <Compile Include="Scripts\EnemySpawner.cs" />
     <Compile Include="Scripts\EventSystem\HealthEvent.cs" />
     <Compile Include="Scripts\EventSystem\LoseEvent.cs" />
+    <Compile Include="Scripts\EventSystem\UIEvent.cs" />
     <Compile Include="Scripts\EventSystem\UnitDeathEvent.cs" />
     <Compile Include="Scripts\EventSystem\UnitHitEvent.cs" />
     <Compile Include="Scripts\EventSystem\WinEvent.cs" />
@@ -67,6 +68,8 @@
     <Compile Include="Scripts\InputManager.cs" />
     <Compile Include="Scripts\Main.cs" />
     <Compile Include="Scripts\Map.cs" />
+    <Compile Include="Scripts\Menu.cs" />
+    <Compile Include="Scripts\Missile.cs" />
     <Compile Include="Scripts\Movement.cs" />
     <Compile Include="Scripts\MuzzleFlash.cs" />
     <Compile Include="Scripts\Shoot.cs" />

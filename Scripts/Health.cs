@@ -17,8 +17,7 @@ namespace EventCallback
         {
             if (GetParent().Name == unitHit.target.Name)
             {   
-                //if(unitHit.target.GetScript().HasMethod("BeingAttacked")) unitHit.target.GetScript().BeingAttacked(unitHit.attacker);
-                //Reduce the enemy tank health with a fixed amount for now
+                //Reduce the tanks health with the given amount
                 health -= unitHit.damage;
                 //Broadcast the health after it has been modified to anyone who is listening
                 GD.Print(unitHit.attacker.Name + " attacked " +  unitHit.target.Name + " and it has " + health + " health left");
