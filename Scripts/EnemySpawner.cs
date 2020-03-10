@@ -98,6 +98,8 @@ public class EnemySpawner : Node2D
             //Create a new win event ad populate it
             WinEvent win = new WinEvent();
             win.won = true;
+            UIEvent uiEvent = new UIEvent();
+            uiEvent.winActive = true;
         }
         //Go through the list of enemies and remove them from the list and then check if the list is empty if the list is 
         //empty then the next wave function is called

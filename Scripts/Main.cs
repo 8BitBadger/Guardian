@@ -43,6 +43,14 @@ public class Main : Node2D
         enemySpawner.Name = "EnemySpawner";
         AddChild(enemySpawner);
     }
+
+    private void EndGame()
+    {
+        enemySpawner.QueueFree();
+        crystal.QueueFree();
+        player.QueueFree();
+        map.QueueFree();
+    }
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(float delta)
     {
@@ -53,6 +61,9 @@ public class Main : Node2D
         //If the ui is activated then we start the game
         if(uiEvent.uiActive) GameStart();
 
+        if(uiEvent.winActive) EndGame();
+
+        if(uiEvent.loseActive) EndGame();
     }
     public override void _ExitTree()
     {

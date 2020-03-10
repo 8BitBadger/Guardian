@@ -6,6 +6,7 @@ public class UI : Node2D
 {
     //Refference to the health bar
     TextureProgress healthbar;
+    Label waveCountDown;
 
 
     // Called when the node enters the scene tree for the first time.
@@ -13,6 +14,7 @@ public class UI : Node2D
     {
         HealthEvent.RegisterListener(UpdateHealthbar);
         healthbar = GetNode<TextureProgress>("Healthbar");
+        waveCountDown = GetNode<Label>("CountDown");
     }
 
     private void UpdateHealthbar(HealthEvent healthEvent)
@@ -23,13 +25,6 @@ public class UI : Node2D
             healthbar.Value = healthEvent.health;
         }
     }
-
-    //  // Called every frame. 'delta' is the elapsed time since the previous frame.
-    //  public override void _Process(float delta)
-    //  {
-    //      
-    //  }
-
     public override void _ExitTree()
     {
         HealthEvent.UnregisterListener(UpdateHealthbar);

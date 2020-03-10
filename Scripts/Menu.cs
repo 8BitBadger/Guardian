@@ -17,17 +17,24 @@ public class Menu : Node2D
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(float delta)
     {
-         if(background.Position.x <= 0) moveRight = true;
-        if(background.Position.x >= 1281) moveRight = false;
-        
+        if (background.Position.x <= 0)
+        {
+            moveRight = false;
+        }
+        else if (background.Position.x >= 1281)
+        {
+            moveRight = true;
+        }
         if (moveRight)
         {
-            background.Position = new Vector2(background.Position.x + speed * delta, background.Position.y);
+            background.Position = new Vector2(background.Position.x - speed * delta, background.Position.y);
         }
         else
         {
             background.Position = new Vector2(background.Position.x + speed * delta, background.Position.y);
         }
+
+        
 
     }
 }
