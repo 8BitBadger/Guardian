@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://Font/OGAFGJF1.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Sprites/Inkscape/GameBackground.png" type="Texture" id=2]
@@ -12,139 +12,136 @@
 size = 150
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=30]
+[sub_resource type="DynamicFont" id=2]
 size = 19
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=29]
+[sub_resource type="DynamicFont" id=3]
 size = 200
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=32]
+[sub_resource type="DynamicFont" id=4]
 size = 200
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=33]
+[sub_resource type="DynamicFont" id=5]
 size = 100
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFontData" id=31]
-font_path = "res://Font/OxinWar-oEJA.ttf"
-
-[sub_resource type="DynamicFont" id=34]
+[sub_resource type="DynamicFont" id=7]
 size = 50
-font_data = SubResource( 31 )
+font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=35]
+[sub_resource type="DynamicFont" id=8]
 size = 50
-font_data = SubResource( 31 )
+font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=36]
+[sub_resource type="DynamicFont" id=9]
 size = 50
-font_data = SubResource( 31 )
+font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxTexture" id=37]
+[sub_resource type="StyleBoxTexture" id=10]
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 491, 178 )
 modulate_color = Color( 0.27451, 0.27451, 0.27451, 1 )
 
-[sub_resource type="StyleBoxTexture" id=38]
+[sub_resource type="StyleBoxTexture" id=11]
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 491, 178 )
 
-[sub_resource type="StyleBoxTexture" id=39]
+[sub_resource type="StyleBoxTexture" id=12]
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 491, 178 )
-
-[sub_resource type="StyleBoxTexture" id=40]
-texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 491, 178 )
-
-[sub_resource type="DynamicFont" id=12]
-size = 50
-font_data = ExtResource( 1 )
-
-[sub_resource type="StyleBoxTexture" id=41]
-texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 491, 178 )
-modulate_color = Color( 0.27451, 0.27451, 0.27451, 1 )
-
-[sub_resource type="StyleBoxTexture" id=42]
-texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 491, 178 )
-
-[sub_resource type="StyleBoxTexture" id=43]
-texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 491, 178 )
-
-[sub_resource type="StyleBoxTexture" id=44]
-texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 491, 178 )
-
-[sub_resource type="DynamicFont" id=45]
-size = 50
-font_data = ExtResource( 1 )
 
 [sub_resource type="StyleBoxTexture" id=13]
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 491, 178 )
-modulate_color = Color( 0.27451, 0.27451, 0.27451, 1 )
 
-[sub_resource type="StyleBoxTexture" id=14]
-texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 491, 178 )
+[sub_resource type="DynamicFont" id=14]
+size = 50
+font_data = ExtResource( 1 )
 
 [sub_resource type="StyleBoxTexture" id=15]
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 491, 178 )
+modulate_color = Color( 0.27451, 0.27451, 0.27451, 1 )
 
 [sub_resource type="StyleBoxTexture" id=16]
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 491, 178 )
 
-[sub_resource type="DynamicFont" id=17]
-size = 50
-font_data = ExtResource( 1 )
+[sub_resource type="StyleBoxTexture" id=17]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 491, 178 )
 
 [sub_resource type="StyleBoxTexture" id=18]
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 491, 178 )
-modulate_color = Color( 0.27451, 0.27451, 0.27451, 1 )
 
-[sub_resource type="StyleBoxTexture" id=19]
-texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 491, 178 )
+[sub_resource type="DynamicFont" id=19]
+size = 50
+font_data = ExtResource( 1 )
 
 [sub_resource type="StyleBoxTexture" id=20]
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 491, 178 )
+modulate_color = Color( 0.27451, 0.27451, 0.27451, 1 )
 
 [sub_resource type="StyleBoxTexture" id=21]
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 491, 178 )
 
-[sub_resource type="DynamicFont" id=22]
-size = 50
-font_data = ExtResource( 1 )
+[sub_resource type="StyleBoxTexture" id=22]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 491, 178 )
 
 [sub_resource type="StyleBoxTexture" id=23]
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 491, 178 )
-modulate_color = Color( 0.27451, 0.27451, 0.27451, 1 )
 
-[sub_resource type="StyleBoxTexture" id=24]
-texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 491, 178 )
+[sub_resource type="DynamicFont" id=24]
+size = 50
+font_data = ExtResource( 1 )
 
 [sub_resource type="StyleBoxTexture" id=25]
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 491, 178 )
+modulate_color = Color( 0.27451, 0.27451, 0.27451, 1 )
 
 [sub_resource type="StyleBoxTexture" id=26]
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 491, 178 )
 
-[sub_resource type="DynamicFont" id=27]
+[sub_resource type="StyleBoxTexture" id=27]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 491, 178 )
+
+[sub_resource type="StyleBoxTexture" id=28]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 491, 178 )
+
+[sub_resource type="DynamicFont" id=29]
+size = 50
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxTexture" id=30]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 491, 178 )
+modulate_color = Color( 0.27451, 0.27451, 0.27451, 1 )
+
+[sub_resource type="StyleBoxTexture" id=31]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 491, 178 )
+
+[sub_resource type="StyleBoxTexture" id=32]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 491, 178 )
+
+[sub_resource type="StyleBoxTexture" id=33]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 491, 178 )
+
+[sub_resource type="DynamicFont" id=34]
 size = 50
 font_data = ExtResource( 1 )
 
@@ -160,7 +157,7 @@ __meta__ = {
 visible = false
 script = ExtResource( 3 )
 
-[node name="Label" type="Label" parent="Menu"]
+[node name="Title" type="Label" parent="Menu"]
 anchor_right = 0.5
 margin_left = 32.0
 margin_top = 24.0
@@ -177,6 +174,7 @@ __meta__ = {
 }
 
 [node name="UI" type="Node2D" parent="."]
+visible = false
 script = ExtResource( 6 )
 
 [node name="Healthbar" type="TextureProgress" parent="UI"]
@@ -195,7 +193,7 @@ margin_left = 24.0
 margin_top = 24.0
 margin_right = 111.0
 margin_bottom = 50.0
-custom_fonts/font = SubResource( 30 )
+custom_fonts/font = SubResource( 2 )
 text = "Health"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -211,7 +209,7 @@ margin_top = 216.0
 margin_right = 1209.0
 margin_bottom = 619.0
 size_flags_stretch_ratio = 0.0
-custom_fonts/font = SubResource( 29 )
+custom_fonts/font = SubResource( 3 )
 text = "Next Wave
 0"
 align = 1
@@ -236,7 +234,7 @@ margin_left = 208.0
 margin_top = 48.0
 margin_right = 1036.0
 margin_bottom = 257.0
-custom_fonts/font = SubResource( 32 )
+custom_fonts/font = SubResource( 4 )
 text = "Credits"
 align = 1
 valign = 1
@@ -253,7 +251,7 @@ margin_left = -88.0
 margin_top = -52.5
 margin_right = 88.0
 margin_bottom = 52.5
-custom_fonts/font = SubResource( 33 )
+custom_fonts/font = SubResource( 5 )
 text = "Art"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -264,7 +262,7 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-custom_fonts/font = SubResource( 34 )
+custom_fonts/font = SubResource( 7 )
 text = "name"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -272,7 +270,7 @@ __meta__ = {
 
 [node name="Website" type="Label" parent="Credits"]
 anchor_right = 1.0
-custom_fonts/font = SubResource( 34 )
+custom_fonts/font = SubResource( 7 )
 text = "link"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -280,7 +278,7 @@ __meta__ = {
 
 [node name="Name2" type="Label" parent="Credits"]
 anchor_right = 1.0
-custom_fonts/font = SubResource( 35 )
+custom_fonts/font = SubResource( 8 )
 text = "name"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -288,7 +286,7 @@ __meta__ = {
 
 [node name="Website2" type="Label" parent="Credits"]
 anchor_right = 1.0
-custom_fonts/font = SubResource( 35 )
+custom_fonts/font = SubResource( 8 )
 text = "link"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -296,7 +294,7 @@ __meta__ = {
 
 [node name="Name3" type="Label" parent="Credits"]
 anchor_right = 1.0
-custom_fonts/font = SubResource( 36 )
+custom_fonts/font = SubResource( 9 )
 text = "name"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -304,7 +302,7 @@ __meta__ = {
 
 [node name="Website3" type="Label" parent="Credits"]
 anchor_right = 1.0
-custom_fonts/font = SubResource( 36 )
+custom_fonts/font = SubResource( 9 )
 text = "link"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -322,11 +320,11 @@ margin_left = 152.0
 margin_top = 280.0
 margin_right = 458.0
 margin_bottom = 391.0
-custom_styles/hover = SubResource( 37 )
-custom_styles/pressed = SubResource( 38 )
-custom_styles/focus = SubResource( 39 )
-custom_styles/normal = SubResource( 40 )
-custom_fonts/font = SubResource( 12 )
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 11 )
+custom_styles/focus = SubResource( 12 )
+custom_styles/normal = SubResource( 13 )
+custom_fonts/font = SubResource( 14 )
 shortcut_in_tooltip = false
 text = "Start"
 __meta__ = {
@@ -339,11 +337,11 @@ margin_left = 152.0
 margin_top = 424.0
 margin_right = 458.0
 margin_bottom = 535.0
-custom_styles/hover = SubResource( 41 )
-custom_styles/pressed = SubResource( 42 )
-custom_styles/focus = SubResource( 43 )
-custom_styles/normal = SubResource( 44 )
-custom_fonts/font = SubResource( 45 )
+custom_styles/hover = SubResource( 15 )
+custom_styles/pressed = SubResource( 16 )
+custom_styles/focus = SubResource( 17 )
+custom_styles/normal = SubResource( 18 )
+custom_fonts/font = SubResource( 19 )
 shortcut_in_tooltip = false
 text = "Credits"
 __meta__ = {
@@ -356,11 +354,11 @@ margin_left = 216.0
 margin_top = 560.0
 margin_right = 421.0
 margin_bottom = 671.0
-custom_styles/hover = SubResource( 13 )
-custom_styles/pressed = SubResource( 14 )
-custom_styles/focus = SubResource( 15 )
-custom_styles/normal = SubResource( 16 )
-custom_fonts/font = SubResource( 17 )
+custom_styles/hover = SubResource( 20 )
+custom_styles/pressed = SubResource( 21 )
+custom_styles/focus = SubResource( 22 )
+custom_styles/normal = SubResource( 23 )
+custom_fonts/font = SubResource( 24 )
 text = "Exit"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -373,11 +371,11 @@ margin_top = 8.0
 margin_right = 1373.0
 margin_bottom = 119.0
 rect_scale = Vector2( 0.5, 0.5 )
-custom_styles/hover = SubResource( 18 )
-custom_styles/pressed = SubResource( 19 )
-custom_styles/focus = SubResource( 20 )
-custom_styles/normal = SubResource( 21 )
-custom_fonts/font = SubResource( 22 )
+custom_styles/hover = SubResource( 25 )
+custom_styles/pressed = SubResource( 26 )
+custom_styles/focus = SubResource( 27 )
+custom_styles/normal = SubResource( 28 )
+custom_fonts/font = SubResource( 29 )
 text = "Exit"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -390,11 +388,11 @@ margin_top = 8.0
 margin_right = 1373.0
 margin_bottom = 119.0
 rect_scale = Vector2( 0.5, 0.5 )
-custom_styles/hover = SubResource( 23 )
-custom_styles/pressed = SubResource( 24 )
-custom_styles/focus = SubResource( 25 )
-custom_styles/normal = SubResource( 26 )
-custom_fonts/font = SubResource( 27 )
+custom_styles/hover = SubResource( 30 )
+custom_styles/pressed = SubResource( 31 )
+custom_styles/focus = SubResource( 32 )
+custom_styles/normal = SubResource( 33 )
+custom_fonts/font = SubResource( 34 )
 text = "Menu"
 __meta__ = {
 "_edit_use_anchors_": false

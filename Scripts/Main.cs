@@ -33,6 +33,9 @@ public class Main : Node2D
         //Instance the player packed scene
         player = playerScene.Instance();
         player.Name = "Player";
+        //Set the players start position, I was to lazy to calculate the 
+        //exact position so I used the tile size and position to do it in program, don't judge me its late at night
+        ((Node2D)player).Position = new Vector2(64 * 20, 64 * 18);
         AddChild(player);
         //Instance the crystal packed scene
         crystal = crystalScene.Instance();

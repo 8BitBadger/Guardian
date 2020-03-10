@@ -13,6 +13,7 @@ public class UIControl : Control
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
+        UIEvent.RegisterListener(UIUpdate);
         //Grab all the references for the scenes
         menuPanel = GetNode<Node2D>("Menu");
         uiPanel = GetNode<Node2D>("UI");
@@ -73,16 +74,16 @@ public class UIControl : Control
     }
     private void ShowUI()
     {
-        //Send message that the ui is changed
-        UIEvent uiei = new UIEvent();
-        uiei.uiActive = true;
-        uiei.FireEvent();
         //Hide all the UI elements
         HideAll();
         //Show the UIPanel
         uiPanel.Show();
         //Show the small exit button
         smallExitBtn.Show();
+        //Send message that the ui is changed
+        UIEvent uiei = new UIEvent();
+        uiei.uiActive = true;
+        uiei.FireEvent();
     }
     private void ShowWin()
     {
@@ -107,5 +108,12 @@ public class UIControl : Control
     {
         //Exit the game
         GetTree().Quit();
+    }
+    private void UIUpdate(UIEvent uiEvent)
+    {
+    }
+    public override void _ExitTree()
+    {
+        UIEvent.UnregisterListener(UIUpdate);
     }
 }

@@ -8,6 +8,8 @@ public class EnemySpawner : Node2D
     //The level of the wave only have ten levels
     int waveLevel = 1;
     [Export]
+    int nextWaveTime = 5;
+    [Export]
     //The point were the enemie will spawn
     Vector2[] spawnPoints = new Vector2[8];
     //A list of all the enemy scenes
@@ -18,12 +20,17 @@ public class EnemySpawner : Node2D
     int enemies = 0;
     //Random number generator used to choose the spawn locations for the enemies
     RandomNumberGenerator rng = new RandomNumberGenerator();
+    //The refference to the wave timer
+    Timer waveTimer;
 
     TileMap map;
     public override void _Ready()
     {
+        waveTimer = GetNode<Timer>("StartWaveTimer");
         //Connect to the Start wave timers timout method
-        GetNode<Timer>("StartWaveTimer").Connect("timeout", this, nameof(SpawnWave));
+        waveTimer.Connect("timeout", this, nameof(Countdown));
+        //Start the new wave timer countdown
+        waveTimer.Start();
         //Regestir the Unit death event to listn for unit deaths
         UnitDeathEvent.RegisterListener(EnemyDies);
         //Get a refference to the map, used later
@@ -35,10 +42,8 @@ public class EnemySpawner : Node2D
         trapScene = ResourceLoader.Load("res://Scenes/Trap.tscn") as PackedScene;
         //Set up the traps as needed
         SetTraps();
-        //Start the new wave timer countdown
-        GetNode<Timer>("StartWaveTimer").Start();
-    }
 
+    }
     private void SetTraps()
     {
         for (int y = 0; y < 80; y++)
@@ -55,6 +60,31 @@ public class EnemySpawner : Node2D
                 }
             }
         }
+    }
+    private void Countdown()
+    {
+        //Use the uievent system to update the up to update or hide the countdown timer as needed
+        UIEvent uiEvent = new UIEvent();
+        //If the countdown is still avtive send the message to show the count down timer label active
+        uiEvent.countdownActive = true;
+        //Update the wave countdown property
+        nextWaveTime -= 1;
+        //Set the count down timer to the updates time left
+        uiEvent.WaveTimeCountdown = nextWaveTime;
+        //Iff the timer has reached zero then we reset the timer value and send the message that the count down timer label needds to be hidden
+        if (nextWaveTime == 0)
+        {
+            //We call the spawn method
+            SpawnWave();
+            //We reset the count down timer for the next wave
+            nextWaveTime = 5;
+            //We stop the count down timer
+            waveTimer.Stop();
+            //We hide the count down label
+            uiEvent.countdownActive = false;
+        }
+        //We fire the UI event
+        uiEvent.FireEvent();
     }
 
     private void SpawnWave()
@@ -90,7 +120,7 @@ public class EnemySpawner : Node2D
             //Add to the wave level
             waveLevel++;
             //Start the new wave timer countdown
-            GetNode<Timer>("StartWaveTimer").Start();
+            waveTimer.Start();
         }
         //Check if the wave level is done
         if (waveLevel == 11)
@@ -98,8 +128,11 @@ public class EnemySpawner : Node2D
             //Create a new win event ad populate it
             WinEvent win = new WinEvent();
             win.won = true;
+            win.FireEvent();
             UIEvent uiEvent = new UIEvent();
             uiEvent.winActive = true;
+            uiEvent.FireEvent();
+
         }
         //Go through the list of enemies and remove them from the list and then check if the list is empty if the list is 
         //empty then the next wave function is called

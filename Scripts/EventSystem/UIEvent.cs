@@ -12,6 +12,7 @@ namespace EventCallback
         public bool winActive;
         public bool loseActive;
         public bool creditsActive;
+        public bool countdownActive;
         //The health to display for the player
         public int health;
         //The amount of kills the player has racked up

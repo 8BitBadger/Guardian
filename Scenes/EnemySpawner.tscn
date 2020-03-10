@@ -8,5 +8,3 @@ script = ExtResource( 1 )
 spawnPoints = PoolVector2Array( 128, 128, 1000, 128, 2400, 128, 128, 1250, 128, 2400, 1250, 2400, 2400, 2400, 2400, 1250 )
 
 [node name="StartWaveTimer" type="Timer" parent="."]
-wait_time = 5.0
-one_shot = true
