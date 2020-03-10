@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using EventCallback;
 
 public class Main : Node2D
 {
@@ -18,6 +19,7 @@ public class Main : Node2D
         playerScene = ResourceLoader.Load("res://Scenes/Player.tscn") as PackedScene;
         crystalScene = ResourceLoader.Load("res://Scenes/Crystal.tscn") as PackedScene;
         enemySpawnerScene = ResourceLoader.Load("res://Scenes/EnemySpawner.tscn") as PackedScene;
+        UIEvent.RegisterListener(UIEventFired);
     }
 
     private void GameStart()
@@ -40,17 +42,20 @@ public class Main : Node2D
         enemySpawner = enemySpawnerScene.Instance();
         enemySpawner.Name = "EnemySpawner";
         AddChild(enemySpawner);
-        
     }
-
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(float delta)
     {
 
     }
+    private void UIEventFired(UIEvent uiEvent)
+    {
+        //If the ui is activated then we start the game
+        if(uiEvent.uiActive) GameStart();
 
+    }
     public override void _ExitTree()
     {
-
+        UIEvent.UnregisterListener(UIEventFired);
     }
 }

@@ -6,14 +6,13 @@ public class UIControl : Control
 {
     //The UI screens that need to be controlled
     Node2D menuPanel, uiPanel, winPanel, losePanel, creditsPanel;
-//The buttons used for all the screens
-    Button startBtn, exitBtn, menuBtn;
+    //The buttons used for all the screens
+    Button startBtn, exitBtn, smallExitBtn, menuBtn, creditsBtn;
     //The main background
     Sprite background;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-
         //Grab all the references for the scenes
         menuPanel = GetNode<Node2D>("Menu");
         uiPanel = GetNode<Node2D>("UI");
@@ -23,14 +22,18 @@ public class UIControl : Control
         background = GetNode<Sprite>("Background");
 
         //Grab a refference to all the buttons that we have
-        startBtn = GetNode<Button>("Menubtn");
+        startBtn = GetNode<Button>("Start");
         exitBtn = GetNode<Button>("Exit");
         menuBtn = GetNode<Button>("Menubtn");
+        smallExitBtn = GetNode<Button>("SmallExit");
+        creditsBtn = GetNode<Button>("Creditsbtn");
 
-//The buttons for the menu
+        //The buttons for the menu
         startBtn.Connect("pressed", this, nameof(ShowUI));
         exitBtn.Connect("pressed", this, nameof(ExitGame));
         menuBtn.Connect("pressed", this, nameof(ShowMenu));
+        smallExitBtn.Connect("pressed", this, nameof(ExitGame));
+        creditsBtn.Connect("pressed", this, nameof(ShowCredits));
 
         //Hide all the scenes at start up
         HideAll();
@@ -44,44 +47,65 @@ public class UIControl : Control
         winPanel.Hide();
         losePanel.Hide();
         creditsPanel.Hide();
+        //Hide the background
         background.Hide();
+        //Hide all the buttons
+        startBtn.Hide();
+        exitBtn.Hide();
+        menuBtn.Hide();
+        smallExitBtn.Hide();
+        creditsBtn.Hide();
     }
-
     private void ShowMenu()
     {
-        //Show the menu as a defualt start up
+        //Send message that the ui is changed
+        UIEvent uiei = new UIEvent();
+        uiei.menuActive = true;
+        uiei.FireEvent();
+        //Hide all the UI elements
+        HideAll();
+        //Show the buttons and menu 
+        startBtn.Show();
+        creditsBtn.Show();
+        exitBtn.Show();
         menuPanel.Show();
         background.Show();
     }
-
     private void ShowUI()
     {
-
+        //Send message that the ui is changed
+        UIEvent uiei = new UIEvent();
+        uiei.uiActive = true;
+        uiei.FireEvent();
+        //Hide all the UI elements
+        HideAll();
+        //Show the UIPanel
+        uiPanel.Show();
+        //Show the small exit button
+        smallExitBtn.Show();
     }
-
     private void ShowWin()
     {
-
+        HideAll();
+        winPanel.Show();
+        menuBtn.Show();
     }
-
     private void ShowLose()
     {
-
+        HideAll();
+        losePanel.Show();
+        menuBtn.Show();
     }
-
     private void ShowCredits()
     {
-
+        HideAll();
+        creditsPanel.Show();
+        background.Show();
+        menuBtn.Show();
     }
     private void ExitGame()
     {
         //Exit the game
         GetTree().Quit();
     }
-
-    //  // Called every frame. 'delta' is the elapsed time since the previous frame.
-    //  public override void _Process(float delta)
-    //  {
-    //      
-    //  }
 }

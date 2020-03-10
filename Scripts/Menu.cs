@@ -4,7 +4,7 @@ using System;
 public class Menu : Node2D
 {
     [Export]
-    int speed;
+    int speed = 50;
     Sprite background;
     //Check where to move the background to
     bool moveRight = true;
@@ -17,7 +17,14 @@ public class Menu : Node2D
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(float delta)
     {
+         if(background.Position.x <= 0) moveRight = true;
+        if(background.Position.x >= 1281) moveRight = false;
+        
         if (moveRight)
+        {
+            background.Position = new Vector2(background.Position.x + speed * delta, background.Position.y);
+        }
+        else
         {
             background.Position = new Vector2(background.Position.x + speed * delta, background.Position.y);
         }

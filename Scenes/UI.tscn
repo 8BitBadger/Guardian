@@ -1,6 +1,6 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=42 format=2]
 
-[ext_resource path="res://Font/OxinWar-oEJA.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Font/OGAFGJF1.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Sprites/Inkscape/GameBackground.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/Menu.cs" type="Script" id=3]
 [ext_resource path="res://Sprites/Button2.png" type="Texture" id=4]
@@ -12,69 +12,118 @@
 size = 150
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=12]
+[sub_resource type="DynamicFont" id=30]
 size = 19
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=13]
+[sub_resource type="DynamicFont" id=29]
 size = 200
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=14]
+[sub_resource type="DynamicFont" id=32]
+size = 200
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=33]
 size = 100
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=15]
+[sub_resource type="DynamicFontData" id=31]
+font_path = "res://Font/OxinWar-oEJA.ttf"
+
+[sub_resource type="DynamicFont" id=34]
+size = 50
+font_data = SubResource( 31 )
+
+[sub_resource type="DynamicFont" id=35]
+size = 50
+font_data = SubResource( 31 )
+
+[sub_resource type="DynamicFont" id=36]
+size = 50
+font_data = SubResource( 31 )
+
+[sub_resource type="StyleBoxTexture" id=37]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 491, 178 )
+modulate_color = Color( 0.27451, 0.27451, 0.27451, 1 )
+
+[sub_resource type="StyleBoxTexture" id=38]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 491, 178 )
+
+[sub_resource type="StyleBoxTexture" id=39]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 491, 178 )
+
+[sub_resource type="StyleBoxTexture" id=40]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 491, 178 )
+
+[sub_resource type="DynamicFont" id=12]
 size = 50
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=16]
+[sub_resource type="StyleBoxTexture" id=41]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 491, 178 )
+modulate_color = Color( 0.27451, 0.27451, 0.27451, 1 )
+
+[sub_resource type="StyleBoxTexture" id=42]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 491, 178 )
+
+[sub_resource type="StyleBoxTexture" id=43]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 491, 178 )
+
+[sub_resource type="StyleBoxTexture" id=44]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 491, 178 )
+
+[sub_resource type="DynamicFont" id=45]
 size = 50
 font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxTexture" id=13]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 491, 178 )
+modulate_color = Color( 0.27451, 0.27451, 0.27451, 1 )
+
+[sub_resource type="StyleBoxTexture" id=14]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 491, 178 )
+
+[sub_resource type="StyleBoxTexture" id=15]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 491, 178 )
+
+[sub_resource type="StyleBoxTexture" id=16]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 491, 178 )
 
 [sub_resource type="DynamicFont" id=17]
 size = 50
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxTexture" id=2]
+[sub_resource type="StyleBoxTexture" id=18]
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 491, 178 )
 modulate_color = Color( 0.27451, 0.27451, 0.27451, 1 )
 
-[sub_resource type="StyleBoxTexture" id=3]
+[sub_resource type="StyleBoxTexture" id=19]
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 491, 178 )
 
-[sub_resource type="StyleBoxTexture" id=4]
+[sub_resource type="StyleBoxTexture" id=20]
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 491, 178 )
 
-[sub_resource type="StyleBoxTexture" id=5]
+[sub_resource type="StyleBoxTexture" id=21]
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 491, 178 )
 
-[sub_resource type="DynamicFont" id=6]
-size = 50
-font_data = ExtResource( 1 )
-
-[sub_resource type="StyleBoxTexture" id=7]
-texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 491, 178 )
-modulate_color = Color( 0.27451, 0.27451, 0.27451, 1 )
-
-[sub_resource type="StyleBoxTexture" id=8]
-texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 491, 178 )
-
-[sub_resource type="StyleBoxTexture" id=9]
-texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 491, 178 )
-
-[sub_resource type="StyleBoxTexture" id=10]
-texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 491, 178 )
-
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=22]
 size = 50
 font_data = ExtResource( 1 )
 
@@ -113,21 +162,22 @@ script = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="Menu"]
 anchor_right = 0.5
-margin_right = 680.0
-margin_bottom = 314.0
+margin_left = 32.0
+margin_top = 24.0
+margin_right = 791.0
+margin_bottom = 338.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.278431, 0.00784314, 0.00784314, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 5
 custom_constants/shadow_offset_y = 5
-text = "guardian"
-align = 1
-valign = 1
+text = "Guardian"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="UI" type="Node2D" parent="."]
+visible = false
 script = ExtResource( 6 )
 
 [node name="Healthbar" type="TextureProgress" parent="UI"]
@@ -146,11 +196,26 @@ margin_left = 24.0
 margin_top = 24.0
 margin_right = 111.0
 margin_bottom = 50.0
-custom_fonts/font = SubResource( 12 )
-text = "health"
+custom_fonts/font = SubResource( 30 )
+text = "Health"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="CountDown" type="Label" parent="UI"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 576.0
+margin_top = 256.0
+margin_right = 689.0
+margin_bottom = 456.0
+size_flags_stretch_ratio = 0.0
+custom_fonts/font = SubResource( 29 )
+text = "0"
+align = 1
+valign = 1
 
 [node name="Win" type="Node2D" parent="."]
 visible = false
@@ -164,14 +229,15 @@ visible = false
 
 [node name="Credits" type="Node2D" parent="."]
 visible = false
+script = ExtResource( 3 )
 
 [node name="Credits" type="Label" parent="Credits"]
-margin_left = 280.0
-margin_top = 40.0
-margin_right = 1012.0
-margin_bottom = 249.0
-custom_fonts/font = SubResource( 13 )
-text = "credits"
+margin_left = 208.0
+margin_top = 48.0
+margin_right = 1036.0
+margin_bottom = 257.0
+custom_fonts/font = SubResource( 32 )
+text = "Credits"
 align = 1
 valign = 1
 __meta__ = {
@@ -187,8 +253,8 @@ margin_left = -88.0
 margin_top = -52.5
 margin_right = 88.0
 margin_bottom = 52.5
-custom_fonts/font = SubResource( 14 )
-text = "art"
+custom_fonts/font = SubResource( 33 )
+text = "Art"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -198,7 +264,7 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-custom_fonts/font = SubResource( 15 )
+custom_fonts/font = SubResource( 34 )
 text = "name"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -206,7 +272,7 @@ __meta__ = {
 
 [node name="Website" type="Label" parent="Credits"]
 anchor_right = 1.0
-custom_fonts/font = SubResource( 15 )
+custom_fonts/font = SubResource( 34 )
 text = "link"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -214,7 +280,7 @@ __meta__ = {
 
 [node name="Name2" type="Label" parent="Credits"]
 anchor_right = 1.0
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 35 )
 text = "name"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -222,7 +288,7 @@ __meta__ = {
 
 [node name="Website2" type="Label" parent="Credits"]
 anchor_right = 1.0
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 35 )
 text = "link"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -230,7 +296,7 @@ __meta__ = {
 
 [node name="Name3" type="Label" parent="Credits"]
 anchor_right = 1.0
-custom_fonts/font = SubResource( 17 )
+custom_fonts/font = SubResource( 36 )
 text = "name"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -238,7 +304,7 @@ __meta__ = {
 
 [node name="Website3" type="Label" parent="Credits"]
 anchor_right = 1.0
-custom_fonts/font = SubResource( 17 )
+custom_fonts/font = SubResource( 36 )
 text = "link"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -260,13 +326,34 @@ margin_left = -153.28
 margin_top = -55.36
 margin_right = 152.72
 margin_bottom = 55.64
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/focus = SubResource( 4 )
-custom_styles/normal = SubResource( 5 )
-custom_fonts/font = SubResource( 6 )
+custom_styles/hover = SubResource( 37 )
+custom_styles/pressed = SubResource( 38 )
+custom_styles/focus = SubResource( 39 )
+custom_styles/normal = SubResource( 40 )
+custom_fonts/font = SubResource( 12 )
 shortcut_in_tooltip = false
-text = "start"
+text = "Start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Creditsbtn" type="Button" parent="."]
+visible = false
+anchor_left = 0.251
+anchor_top = 0.488
+anchor_right = 0.251
+anchor_bottom = 0.488
+margin_left = -169.28
+margin_top = 72.64
+margin_right = 136.72
+margin_bottom = 183.64
+custom_styles/hover = SubResource( 41 )
+custom_styles/pressed = SubResource( 42 )
+custom_styles/focus = SubResource( 43 )
+custom_styles/normal = SubResource( 44 )
+custom_fonts/font = SubResource( 45 )
+shortcut_in_tooltip = false
+text = "Credits"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -277,16 +364,37 @@ anchor_left = 0.25
 anchor_top = 0.677
 anchor_right = 0.25
 anchor_bottom = 0.677
-margin_left = -104.0
-margin_top = -55.44
-margin_right = 101.0
-margin_bottom = 55.5599
-custom_styles/hover = SubResource( 7 )
-custom_styles/pressed = SubResource( 8 )
-custom_styles/focus = SubResource( 9 )
-custom_styles/normal = SubResource( 10 )
-custom_fonts/font = SubResource( 11 )
-text = "exit"
+margin_left = -112.0
+margin_top = 64.56
+margin_right = 93.0
+margin_bottom = 175.56
+custom_styles/hover = SubResource( 13 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 15 )
+custom_styles/normal = SubResource( 16 )
+custom_fonts/font = SubResource( 17 )
+text = "Exit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SmallExit" type="Button" parent="."]
+visible = false
+anchor_left = 0.25
+anchor_top = 0.677
+anchor_right = 0.25
+anchor_bottom = 0.677
+margin_left = 848.0
+margin_top = -479.44
+margin_right = 1053.0
+margin_bottom = -368.44
+rect_scale = Vector2( 0.5, 0.5 )
+custom_styles/hover = SubResource( 18 )
+custom_styles/pressed = SubResource( 19 )
+custom_styles/focus = SubResource( 20 )
+custom_styles/normal = SubResource( 21 )
+custom_fonts/font = SubResource( 22 )
+text = "Exit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -297,17 +405,17 @@ anchor_left = 0.25
 anchor_top = 0.677
 anchor_right = 0.25
 anchor_bottom = 0.677
-margin_left = 840.0
-margin_top = -471.44
-margin_right = 1045.0
-margin_bottom = -360.44
+margin_left = 848.0
+margin_top = -479.44
+margin_right = 1053.0
+margin_bottom = -368.44
 rect_scale = Vector2( 0.5, 0.5 )
 custom_styles/hover = SubResource( 23 )
 custom_styles/pressed = SubResource( 24 )
 custom_styles/focus = SubResource( 25 )
 custom_styles/normal = SubResource( 26 )
 custom_fonts/font = SubResource( 27 )
-text = "menu"
+text = "Menu"
 __meta__ = {
 "_edit_use_anchors_": false
 }
