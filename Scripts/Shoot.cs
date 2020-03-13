@@ -41,7 +41,7 @@ public class Shoot : Node2D
         //Connect to the input manager to read the mouses click event
         GetNode<InputManager>("../../../../InputManager").Connect("leftMouseClicked", this, nameof(Fire));
 
-        MissilePickupEvent.RegisterListener();
+        MissilePickupEvent.RegisterListener(SetMissileUpgrade);
 
     }
     private void Fire()
