@@ -19,5 +19,6 @@ namespace EventCallback
         public int kills;
         //The amount of time the before the new wave starts
         public int WaveTimeCountdown;
+        public int level;
     }
 }

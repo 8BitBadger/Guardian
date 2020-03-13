@@ -5,6 +5,8 @@ public class Shoot : Node2D
 {
     //Refference to tanks KinematicBody2D
     KinematicBody2D tankBody;
+
+    bool missileUpgrade = false;
     //Used to show the bullet path when the gun is fired
     //Line2D traceLine;
     //The position were the ray cast hit
@@ -39,6 +41,8 @@ public class Shoot : Node2D
         //Connect to the input manager to read the mouses click event
         GetNode<InputManager>("../../../../InputManager").Connect("leftMouseClicked", this, nameof(Fire));
 
+        MissilePickupEvent.RegisterListener();
+
     }
     private void Fire()
     {
@@ -66,6 +70,11 @@ public class Shoot : Node2D
         //traceLine.Points = new Vector2[] {Vector2.Zero, hitPos };
         //traceLine.Visible = true;
         //traceTimer.Start();
+    }
+
+    private void SetMissileUpgrade(MissilePickupEvent mpe)
+    {
+        missileUpgrade = mpe.missileUpgrade;
     }
     //private void HideTrace()
     //{

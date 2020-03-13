@@ -24,6 +24,7 @@ namespace EventCallback
                 HealthEvent hei = new HealthEvent();
                 hei.health = health;
                 hei.target = unitHit.target;
+                hei.FireEvent();
                 //Check if the health has gone down to zero
                 CheckHealth();
             }

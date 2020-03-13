@@ -9,8 +9,10 @@ public class Main : Node2D
     PackedScene playerScene = new PackedScene();
     PackedScene crystalScene = new PackedScene();
     PackedScene enemySpawnerScene = new PackedScene();
+    PackedScene UIScene = new PackedScene();
+    PackedScene missilePickupScene = new PackedScene();
     //The nodes that will link to the objects once instanced
-    Node map, player, crystal, enemySpawner;
+    Node map, player, crystal, enemySpawner, ui;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
@@ -19,9 +21,15 @@ public class Main : Node2D
         playerScene = ResourceLoader.Load("res://Scenes/Player.tscn") as PackedScene;
         crystalScene = ResourceLoader.Load("res://Scenes/Crystal.tscn") as PackedScene;
         enemySpawnerScene = ResourceLoader.Load("res://Scenes/EnemySpawner.tscn") as PackedScene;
-        UIEvent.RegisterListener(UIEventFired);
-    }
+        UIScene = ResourceLoader.Load("res://Scenes/UI.tscn") as PackedScene;
+        missilePickupScene = ResourceLoader.Load("res://Scenes/Missile.tscn") as PackedScene;
+        MainEvent.RegisterListener(UIEventFired);
+        UnitDeathEvent.RegisterListener(EndGame);
 
+        ui = UIScene.Instance();
+        ui.Name = "UI";
+        AddChild(ui);
+    }
     private void GameStart()
     {
         //The instance of the map packed scene
@@ -45,31 +53,31 @@ public class Main : Node2D
         enemySpawner = enemySpawnerScene.Instance();
         enemySpawner.Name = "EnemySpawner";
         AddChild(enemySpawner);
-    }
 
-    private void EndGame()
+    }
+    private void EndGame(UnitDeathEvent ude)
     {
-        enemySpawner.QueueFree();
-        crystal.QueueFree();
-        player.QueueFree();
-        map.QueueFree();
+        if (ude.UnitNode.IsInGroup("Player"))
+        {
+            enemySpawner.QueueFree();
+            crystal.QueueFree();
+            player.QueueFree();
+            map.QueueFree();
+        }
     }
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(float delta)
     {
 
     }
-    private void UIEventFired(UIEvent uiEvent)
+    private void UIEventFired(MainEvent mainEvent)
     {
         //If the ui is activated then we start the game
-        if(uiEvent.uiActive) GameStart();
-
-        if(uiEvent.winActive) EndGame();
-
-        if(uiEvent.loseActive) EndGame();
+        if (mainEvent.startBtnPressed) GameStart();
     }
     public override void _ExitTree()
     {
-        UIEvent.UnregisterListener(UIEventFired);
+        MainEvent.UnregisterListener(UIEventFired);
+        UnitDeathEvent.UnregisterListener(EndGame);
     }
 }

@@ -2,25 +2,28 @@ using Godot;
 using System;
 using EventCallback;
 
-public class UIControl : Control
+public class UIControl : CanvasLayer
 {
     //The UI screens that need to be controlled
-    Node2D menuPanel, uiPanel, winPanel, losePanel, creditsPanel;
+    Node2D menuPanel, winPanel, losePanel, creditsPanel, uiPanel;
     //The buttons used for all the screens
     Button startBtn, exitBtn, smallExitBtn, menuBtn, creditsBtn;
     //The main background
     Sprite background;
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        UIEvent.RegisterListener(UIUpdate);
+
+        UnitDeathEvent.RegisterListener(UnitDeath);
         //Grab all the references for the scenes
         menuPanel = GetNode<Node2D>("Menu");
-        uiPanel = GetNode<Node2D>("UI");
         winPanel = GetNode<Node2D>("Win");
         losePanel = GetNode<Node2D>("Lose");
-        creditsPanel = GetNode<Node2D>("Credits");
+        creditsPanel = GetNode<Node2D>("Credits"); 
+        uiPanel = GetNode<Node2D>("UI");
         background = GetNode<Sprite>("Background");
+       
 
         //Grab a refference to all the buttons that we have
         startBtn = GetNode<Button>("Start");
@@ -44,10 +47,10 @@ public class UIControl : Control
     {
         //Hide all the UI screens
         menuPanel.Hide();
-        uiPanel.Hide();
         winPanel.Hide();
         losePanel.Hide();
         creditsPanel.Hide();
+        uiPanel.Hide();
         //Hide the background
         background.Hide();
         //Hide all the buttons
@@ -60,9 +63,9 @@ public class UIControl : Control
     private void ShowMenu()
     {
         //Send message that the ui is changed
-        UIEvent uiei = new UIEvent();
-        uiei.menuActive = true;
-        uiei.FireEvent();
+        MainEvent mei = new MainEvent();
+        mei.menuBtnPressed = true;
+        mei.FireEvent();
         //Hide all the UI elements
         HideAll();
         //Show the buttons and menu 
@@ -73,17 +76,17 @@ public class UIControl : Control
         background.Show();
     }
     private void ShowUI()
-    {
-        //Hide all the UI elements
+    {          //Hide all the UI elements
         HideAll();
         //Show the UIPanel
-        uiPanel.Show();
         //Show the small exit button
         smallExitBtn.Show();
+
+        uiPanel.Show();
         //Send message that the ui is changed
-        UIEvent uiei = new UIEvent();
-        uiei.uiActive = true;
-        uiei.FireEvent();
+        MainEvent mei = new MainEvent();
+        mei.startBtnPressed = true;
+        mei.FireEvent();
     }
     private void ShowWin()
     {
@@ -109,11 +112,12 @@ public class UIControl : Control
         //Exit the game
         GetTree().Quit();
     }
-    private void UIUpdate(UIEvent uiEvent)
+    private void UnitDeath(UnitDeathEvent ude)
     {
+if(ude.UnitNode.IsInGroup("Player")) ShowLose(); 
     }
     public override void _ExitTree()
     {
-        UIEvent.UnregisterListener(UIUpdate);
+        UnitDeathEvent.UnregisterListener(UnitDeath);
     }
 }

@@ -25,7 +25,7 @@ public class UI : Node2D
     }
     private void UpdateUI(UIEvent uiEvent)
     {
-        waveCountDown.Text = "Next Wave\n" + uiEvent.WaveTimeCountdown;
+        waveCountDown.Text = "Wave " + uiEvent.level + " starts in\n" + uiEvent.WaveTimeCountdown;
         if(uiEvent.countdownActive) 
         {
             waveCountDown.Show();
