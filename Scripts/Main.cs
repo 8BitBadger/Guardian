@@ -12,7 +12,7 @@ public class Main : Node2D
     PackedScene UIScene = new PackedScene();
     PackedScene missilePickupScene = new PackedScene();
     //The nodes that will link to the objects once instanced
-    Node map, player, crystal, enemySpawner, ui;
+    Node map, player, crystal, enemySpawner, ui, missilePickup;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
@@ -22,9 +22,10 @@ public class Main : Node2D
         crystalScene = ResourceLoader.Load("res://Scenes/Crystal.tscn") as PackedScene;
         enemySpawnerScene = ResourceLoader.Load("res://Scenes/EnemySpawner.tscn") as PackedScene;
         UIScene = ResourceLoader.Load("res://Scenes/UI.tscn") as PackedScene;
-        missilePickupScene = ResourceLoader.Load("res://Scenes/Missile.tscn") as PackedScene;
+        missilePickupScene = ResourceLoader.Load("res://Scenes/MissilePickup.tscn") as PackedScene;
         MainEvent.RegisterListener(UIEventFired);
         UnitDeathEvent.RegisterListener(EndGame);
+        WinEvent.RegisterListener(WinTriggered);
 
         ui = UIScene.Instance();
         ui.Name = "UI";
@@ -49,11 +50,15 @@ public class Main : Node2D
         crystal = crystalScene.Instance();
         crystal.Name = "Crystal";
         AddChild(crystal);
+        //Add the missile pickup
+        missilePickup = missilePickupScene.Instance();
+        missilePickup.Name = ("MissilePickup");
+        ((Node2D)missilePickup).Position = new Vector2(75 * 46, 45 * 64);
+        AddChild(missilePickup);
         //Instance the enemySpawned packed scene
         enemySpawner = enemySpawnerScene.Instance();
         enemySpawner.Name = "EnemySpawner";
         AddChild(enemySpawner);
-
     }
     private void EndGame(UnitDeathEvent ude)
     {
@@ -65,19 +70,22 @@ public class Main : Node2D
             map.QueueFree();
         }
     }
-    // Called every frame. 'delta' is the elapsed time since the previous frame.
-    public override void _Process(float delta)
-    {
-
-    }
     private void UIEventFired(MainEvent mainEvent)
     {
         //If the ui is activated then we start the game
         if (mainEvent.startBtnPressed) GameStart();
     }
+    private void WinTriggered(WinEvent we)
+    {
+        enemySpawner.QueueFree();
+        crystal.QueueFree();
+        player.QueueFree();
+        map.QueueFree();
+    }
     public override void _ExitTree()
     {
         MainEvent.UnregisterListener(UIEventFired);
         UnitDeathEvent.UnregisterListener(EndGame);
+        WinEvent.UnregisterListener(WinTriggered);
     }
 }

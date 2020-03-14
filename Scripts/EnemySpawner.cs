@@ -6,7 +6,7 @@ using EventCallback;
 public class EnemySpawner : Node2D
 {
     //The level of the wave only have ten levels
-    int waveLevel = 10;
+    int waveLevel = 1;
     [Export]
     int nextWaveTime = 5;
     [Export]
@@ -93,15 +93,32 @@ public class EnemySpawner : Node2D
         GD.Print("Wave Level = " + waveLevel);
         //Randomize the number set before we use it
         rng.Randomize();
+
+        Vector2 oldSpawnPoint = Vector2.Zero;
+
         for (int i = 0; i < waveLevel * 1.35; i++)
         {
             //Instance the new enmy object and set it to the temp node for editing
             Node tempNode = enemyScenes[0].Instance();
-            //Get a random lacation from the spawn points list
-            Vector2 spawnLocation = spawnPoints[rng.RandiRange(0, spawnPoints.Length - 1)];
-            //Get a snapshot of the physics state of he world at this moment
 
-            ((Node2D)tempNode).Position = spawnLocation;
+
+            //Get a random lacation from the spawn points list
+            Vector2 NewSpawnPoint = GetSpawnPos();
+
+            GD.Print("Spawn Location " + NewSpawnPoint);
+
+            if (NewSpawnPoint == oldSpawnPoint)
+            {
+                NewSpawnPoint = GetSpawnPos();
+            }
+            else
+            {
+                GD.Print("new spawn point same as old spawn point, getting new spawn point");
+                ((Node2D)tempNode).Position = NewSpawnPoint;
+                oldSpawnPoint = NewSpawnPoint;
+            }
+
+            GD.Print("Enemy position = " + ((Node2D)tempNode).Position);
 
             //Add the new enemy to the enemy spawner as a child of it
             AddChild(tempNode);
@@ -109,7 +126,7 @@ public class EnemySpawner : Node2D
             enemyCount++;
         }
 
-        GD.Print( + enemyCount + " enemies spawned");
+        GD.Print(+enemyCount + " enemies spawned");
     }
     public void EnemyDies(UnitDeathEvent deathEvent)
     {
@@ -137,11 +154,50 @@ public class EnemySpawner : Node2D
             UIEvent uiEvent = new UIEvent();
             uiEvent.winActive = true;
             uiEvent.FireEvent();
-
         }
         //Go through the list of enemies and remove them from the list and then check if the list is empty if the list is 
         //empty then the next wave function is called
 
+    }
+
+    private Vector2 GetSpawnPos()
+    {
+
+        bool lockX = false, topRow = false, leftColumn = false;
+        int xPos;
+        int yPos;
+            //Determine if we should lock the vertical axis
+        lockX = Convert.ToBoolean(rng.RandiRange(0, 1));
+
+        if (lockX)
+        {
+            //If we lock the x position then we toggle between the top row or the botton row to spawn in
+            topRow = Convert.ToBoolean(rng.RandiRange(0, 1));
+            if (topRow)
+            {
+                xPos = 128;
+            }
+            else
+            {
+                xPos = 2432;
+            }
+            //after we determine the x pos we random the y spawn position
+            yPos = rng.RandiRange(128, 2432);
+        }
+        else
+        {
+            leftColumn = Convert.ToBoolean(rng.RandiRange(0, 1));
+            if (leftColumn)
+            {
+                yPos = 128;
+            }
+            else
+            {
+                yPos = 2432;
+            }
+            xPos = rng.RandiRange(128, 2432);
+        }
+        return new Vector2(xPos, yPos);
     }
     public override void _ExitTree()
     {

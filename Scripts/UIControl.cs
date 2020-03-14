@@ -16,14 +16,16 @@ public class UIControl : CanvasLayer
     {
 
         UnitDeathEvent.RegisterListener(UnitDeath);
+        WinEvent.RegisterListener(WinTriggered);
+
         //Grab all the references for the scenes
         menuPanel = GetNode<Node2D>("Menu");
         winPanel = GetNode<Node2D>("Win");
         losePanel = GetNode<Node2D>("Lose");
-        creditsPanel = GetNode<Node2D>("Credits"); 
+        creditsPanel = GetNode<Node2D>("Credits");
         uiPanel = GetNode<Node2D>("UI");
         background = GetNode<Sprite>("Background");
-       
+
 
         //Grab a refference to all the buttons that we have
         startBtn = GetNode<Button>("Start");
@@ -114,10 +116,17 @@ public class UIControl : CanvasLayer
     }
     private void UnitDeath(UnitDeathEvent ude)
     {
-if(ude.UnitNode.IsInGroup("Player")) ShowLose(); 
+        if (ude.UnitNode.IsInGroup("Player")) ShowLose();
+    }
+
+    private void WinTriggered(WinEvent we)
+    {
+        ShowWin();
     }
     public override void _ExitTree()
     {
         UnitDeathEvent.UnregisterListener(UnitDeath);
+        WinEvent.UnregisterListener(WinTriggered);
+
     }
 }
