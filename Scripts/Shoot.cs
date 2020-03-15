@@ -14,6 +14,9 @@ public class Shoot : Node2D
     //Timer used to time the flash of hte bullet
     //Timer traceTimer;
 
+    PackedScene missileScene = new PackedScene();
+    Node missile;
+
     //We need a line rendered to show the path of the projectile
     //We need to cas a ray to the mouse coordinates
     public override void _Ready()
@@ -40,36 +43,48 @@ public class Shoot : Node2D
         tankBody = GetNode<KinematicBody2D>("../../../../Player");
         //Connect to the input manager to read the mouses click event
         GetNode<InputManager>("../../../../InputManager").Connect("leftMouseClicked", this, nameof(Fire));
+        missileScene = ResourceLoader.Load("res://Scenes/Missile.tscn") as PackedScene;
 
         MissilePickupEvent.RegisterListener(SetMissileUpgrade);
 
     }
     private void Fire()
     {
-        //Get a snapshot of the physics state of he world at this moment
-        Physics2DDirectSpaceState worldState = GetWorld2d().DirectSpaceState;
-        //Get the raycast hits and store them in a dictionary
-        Godot.Collections.Dictionary hits = worldState.IntersectRay(GlobalPosition, GetGlobalMousePosition(), new Godot.Collections.Array { tankBody }, tankBody.CollisionMask);
-        //Check if there was a hit
-        if (hits.Count > 0)
+        if (missileUpgrade)
         {
-            
-            //Change the line2d end position if there was a hit
-            //hitPos = (Vector2)hits["position"];
-            if (hits.Contains("collider"))
-            {
-                UnitHitEvent uhei = new UnitHitEvent();
-                uhei.attacker = (Node2D)Owner;
-                uhei.target = (Node2D)hits["collider"];
-                uhei.damage = 50;
-                uhei.Description = uhei.attacker.Name + " attacked " + uhei.target.Name;
-                uhei.FireEvent();
-            }
+            missile = missileScene.Instance();
+            ((Node2D)missile).Rotation = Rotation;
+            AddChild(missile);
+
         }
-        //Set the start and end of the line2D and then make it visible
-        //traceLine.Points = new Vector2[] {Vector2.Zero, hitPos };
-        //traceLine.Visible = true;
-        //traceTimer.Start();
+        else
+        {
+            //Get a snapshot of the physics state of he world at this moment
+            Physics2DDirectSpaceState worldState = GetWorld2d().DirectSpaceState;
+            //Get the raycast hits and store them in a dictionary
+            Godot.Collections.Dictionary hits = worldState.IntersectRay(GlobalPosition, GetGlobalMousePosition(), new Godot.Collections.Array { tankBody }, tankBody.CollisionMask);
+            //Check if there was a hit
+            if (hits.Count > 0)
+            {
+
+                //Change the line2d end position if there was a hit
+                //hitPos = (Vector2)hits["position"];
+                if (hits.Contains("collider"))
+                {
+                    UnitHitEvent uhei = new UnitHitEvent();
+                    uhei.attacker = (Node2D)Owner;
+                    uhei.target = (Node2D)hits["collider"];
+                    uhei.damage = 50;
+                    uhei.Description = uhei.attacker.Name + " attacked " + uhei.target.Name;
+                    uhei.FireEvent();
+                }
+            }
+            //Set the start and end of the line2D and then make it visible
+            //traceLine.Points = new Vector2[] {Vector2.Zero, hitPos };
+            //traceLine.Visible = true;
+            //traceTimer.Start();
+        }
+
     }
 
     private void SetMissileUpgrade(MissilePickupEvent mpe)
@@ -78,6 +93,6 @@ public class Shoot : Node2D
     }
     //private void HideTrace()
     //{
-        //traceLine.Visible = false;
+    //traceLine.Visible = false;
     //}
 }

@@ -53,7 +53,6 @@ public class Main : Node2D
         //Add the missile pickup
         missilePickup = missilePickupScene.Instance();
         missilePickup.Name = ("MissilePickup");
-        ((Node2D)missilePickup).Position = new Vector2(75 * 46, 45 * 64);
         AddChild(missilePickup);
         //Instance the enemySpawned packed scene
         enemySpawner = enemySpawnerScene.Instance();

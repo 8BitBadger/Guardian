@@ -4,23 +4,28 @@
 [ext_resource path="res://Scripts/Missile.cs" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 6.44757, 2.04799 )
+extents = Vector2( 7.19961, 2.90982 )
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 436.428
+radius = 267.061
 
-[node name="Missile" type="Area2D"]
+[node name="MissielBody" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource( 1 )
+
+[node name="TargetFinder" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TargetFinder"]
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 
 [node name="Life" type="Timer" parent="."]
-
-[node name="TargetFinder" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TargetFinder"]
-shape = SubResource( 2 )
+wait_time = 15.0
+one_shot = true

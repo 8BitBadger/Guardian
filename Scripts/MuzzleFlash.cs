@@ -1,8 +1,9 @@
 using Godot;
 using System;
-
+using EventCallback;
 public class MuzzleFlash : Sprite
 {
+    bool missileUpgrade = false;
     Timer flashTimer;
 
     // Called when the node enters the scene tree for the first time.
@@ -17,22 +18,27 @@ public class MuzzleFlash : Sprite
         AddChild(flashTimer, true);
         GetNode<InputManager>("../../../../InputManager").Connect("leftMouseClicked", this, nameof(ShowFlash));
         GetNode<Timer>(flashTimer.Name).Connect("timeout", this, nameof(HideFlash));
+        //Register the missile event 
+        MissilePickupEvent.RegisterListener(GotMissile);
     }
-
     private void ShowFlash()
     {
-        flashTimer.Start();
-        this.Visible = true;
+        if (!missileUpgrade)
+        {
+            flashTimer.Start();
+            this.Visible = true;
+        }
     }
-
     private void HideFlash()
     {
         this.Visible = false;
     }
-
-    //  // Called every frame. 'delta' is the elapsed time since the previous frame.
-    //  public override void _Process(float delta)
-    //  {
-    //      
-    //  }
+    private void GotMissile(MissilePickupEvent mpe)
+    {
+        missileUpgrade = mpe.missileUpgrade;
+    }
+    public override void _ExitTree()
+    {
+        MissilePickupEvent.UnregisterListener(GotMissile);
+    }
 }

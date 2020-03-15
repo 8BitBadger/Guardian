@@ -9,8 +9,10 @@ public class MisslePickup : Node2D
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        GetNode<Area2D>("Sprite/Are2D").Connect("body_entered", this, nameof(Collided));
-        Position = new Vector2(75 * 64, 45 *64);
+        GetNode<Area2D>("Area2D").Connect("body_entered", this, nameof(Collided));
+
+       //Position = new Vector2(75.5f * 64, 45.5f *64);
+        Position = new Vector2(64 * 22, 64 * 18);
         
     }
 
