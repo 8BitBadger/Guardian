@@ -6,7 +6,7 @@ using EventCallback;
 public class EnemySpawner : Node2D
 {
     //The level of the wave only have ten levels
-    int waveLevel = 10;
+    int waveLevel = 1;
     int nextWaveTime = 5;
     //A list of all the enemy scenes
     List<PackedScene> enemyScenes = new List<PackedScene>();
