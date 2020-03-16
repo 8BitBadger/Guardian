@@ -20,7 +20,6 @@ namespace EventCallback
                 //Reduce the tanks health with the given amount
                 health -= unitHit.damage;
                 //Broadcast the health after it has been modified to anyone who is listening
-                GD.Print(unitHit.attacker.Name + " attacked " +  unitHit.target.Name + " and it has " + health + " health left");
                 HealthEvent hei = new HealthEvent();
                 hei.health = health;
                 hei.target = unitHit.target;
@@ -45,6 +44,7 @@ namespace EventCallback
             udei.Description = "Unit " + this.Name + " has died.";
             udei.UnitNode = (Node2D)GetParent();
             udei.FireEvent();
+
             //Remove the parent node forn the scene
             udei.UnitNode.QueueFree();
         }

@@ -173,7 +173,7 @@ public class AIMovement : KinematicBody2D
                 UnitHitEvent uhei = new UnitHitEvent();
                 uhei.attacker = (Node2D)GetParent();
                 uhei.target = (Node2D)hits["collider"];
-                uhei.damage = 10;
+                uhei.damage = 5;
                 uhei.Description = uhei.attacker.Name + " attacked " + uhei.target.Name;
                 uhei.FireEvent();
             }

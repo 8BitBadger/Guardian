@@ -6,12 +6,8 @@ using EventCallback;
 public class EnemySpawner : Node2D
 {
     //The level of the wave only have ten levels
-    int waveLevel = 1;
-    [Export]
+    int waveLevel = 10;
     int nextWaveTime = 5;
-    [Export]
-    //The point were the enemie will spawn
-    Vector2[] spawnPoints = new Vector2[8];
     //A list of all the enemy scenes
     List<PackedScene> enemyScenes = new List<PackedScene>();
     //The packed scene to store the trap in for pre loading
@@ -22,7 +18,6 @@ public class EnemySpawner : Node2D
     RandomNumberGenerator rng = new RandomNumberGenerator();
     //The refference to the wave timer
     Timer waveTimer;
-
     TileMap map;
     public override void _Ready()
     {
@@ -37,12 +32,11 @@ public class EnemySpawner : Node2D
         map = GetNode<TileMap>("../Map/TileMap");
         //Add the different enemies that cna be spawned
         enemyScenes.Add(ResourceLoader.Load("res://Scenes/SmallTank.tscn") as PackedScene);
-        enemyScenes.Add(ResourceLoader.Load("res://Scenes/LargeTank.tscn") as PackedScene);
+        //enemyScenes.Add(ResourceLoader.Load("res://Scenes/LargeTank.tscn") as PackedScene);
         //Load the traps that are used later
         trapScene = ResourceLoader.Load("res://Scenes/Trap.tscn") as PackedScene;
         //Set up the traps as needed
         SetTraps();
-
     }
     private void SetTraps()
     {
@@ -78,7 +72,7 @@ public class EnemySpawner : Node2D
             //We call the spawn method
             SpawnWave();
             //We reset the count down timer for the next wave
-            nextWaveTime = 10;
+            nextWaveTime = 5;
             //We stop the count down timer
             waveTimer.Stop();
             //We hide the count down label
@@ -87,12 +81,9 @@ public class EnemySpawner : Node2D
         //We fire the UI event
         uiEvent.FireEvent();
     }
-
     private void SpawnWave()
     {
         GD.Print("Wave Level = " + waveLevel);
-        //Randomize the number set before we use it
-        rng.Randomize();
 
         Vector2 oldSpawnPoint = Vector2.Zero;
 
@@ -100,8 +91,6 @@ public class EnemySpawner : Node2D
         {
             //Instance the new enmy object and set it to the temp node for editing
             Node tempNode = enemyScenes[0].Instance();
-
-
             //Get a random lacation from the spawn points list
             Vector2 NewSpawnPoint = GetSpawnPos();
 
@@ -125,8 +114,6 @@ public class EnemySpawner : Node2D
             //Increase the enemy count to keep track of how many enemies are on the board at any given time
             enemyCount++;
         }
-
-        GD.Print(+enemyCount + " enemies spawned");
     }
     public void EnemyDies(UnitDeathEvent deathEvent)
     {
@@ -135,7 +122,6 @@ public class EnemySpawner : Node2D
         {
             //Subtract from thte enemy list
             enemyCount--;
-
         }
         if (enemyCount == 0)
         {
@@ -157,16 +143,16 @@ public class EnemySpawner : Node2D
         }
         //Go through the list of enemies and remove them from the list and then check if the list is empty if the list is 
         //empty then the next wave function is called
-
     }
 
     private Vector2 GetSpawnPos()
     {
-
+        //Randomize the number set before we use it
+        rng.Randomize();
         bool lockX = false, topRow = false, leftColumn = false;
         int xPos;
         int yPos;
-            //Determine if we should lock the vertical axis
+        //Determine if we should lock the vertical axis
         lockX = Convert.ToBoolean(rng.RandiRange(0, 1));
 
         if (lockX)

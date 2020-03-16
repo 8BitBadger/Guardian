@@ -19,26 +19,26 @@ public class MuzzleFlash : Sprite
         GetNode<InputManager>("../../../../InputManager").Connect("leftMouseClicked", this, nameof(ShowFlash));
         GetNode<Timer>(flashTimer.Name).Connect("timeout", this, nameof(HideFlash));
         //Register the missile event 
-        MissilePickupEvent.RegisterListener(GotMissile);
+        //MissilePickupEvent.RegisterListener(GotMissile);
     }
     private void ShowFlash()
     {
-        if (!missileUpgrade)
-        {
+        //if (!missileUpgrade)
+        //{
             flashTimer.Start();
             this.Visible = true;
-        }
+        //}
     }
     private void HideFlash()
     {
         this.Visible = false;
     }
-    private void GotMissile(MissilePickupEvent mpe)
-    {
-        missileUpgrade = mpe.missileUpgrade;
-    }
+    //private void GotMissile(MissilePickupEvent mpe)
+    //{
+    //   missileUpgrade = mpe.missileUpgrade;
+    //}
     public override void _ExitTree()
     {
-        MissilePickupEvent.UnregisterListener(GotMissile);
+        //MissilePickupEvent.UnregisterListener(GotMissile);
     }
 }

@@ -17,6 +17,7 @@ public class UIControl : CanvasLayer
 
         UnitDeathEvent.RegisterListener(UnitDeath);
         WinEvent.RegisterListener(WinTriggered);
+        LoseEvent.RegisterListener(LoseTriggered);
 
         //Grab all the references for the scenes
         menuPanel = GetNode<Node2D>("Menu");
@@ -123,10 +124,14 @@ public class UIControl : CanvasLayer
     {
         ShowWin();
     }
+    private void LoseTriggered(LoseEvent le)
+    {
+        ShowLose();
+    }
     public override void _ExitTree()
     {
         UnitDeathEvent.UnregisterListener(UnitDeath);
         WinEvent.UnregisterListener(WinTriggered);
-
+        LoseEvent.UnregisterListener(LoseTriggered);
     }
 }

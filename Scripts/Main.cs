@@ -26,6 +26,7 @@ public class Main : Node2D
         MainEvent.RegisterListener(UIEventFired);
         UnitDeathEvent.RegisterListener(EndGame);
         WinEvent.RegisterListener(WinTriggered);
+        LoseEvent.RegisterListener(LostTriggered);
 
         ui = UIScene.Instance();
         ui.Name = "UI";
@@ -68,6 +69,12 @@ public class Main : Node2D
             player.QueueFree();
             map.QueueFree();
         }
+        if (ude.UnitNode.Name == "Crystal")
+        {
+            LoseEvent lei = new LoseEvent();
+            lei.lost = true;
+            lei.FireEvent();
+        }
     }
     private void UIEventFired(MainEvent mainEvent)
     {
@@ -81,10 +88,21 @@ public class Main : Node2D
         player.QueueFree();
         map.QueueFree();
     }
+    private void LostTriggered(LoseEvent loseEvent)
+    {
+ 
+            enemySpawner.QueueFree();
+            crystal.QueueFree();
+            player.QueueFree();
+            map.QueueFree();
+    
+    }
     public override void _ExitTree()
     {
         MainEvent.UnregisterListener(UIEventFired);
         UnitDeathEvent.UnregisterListener(EndGame);
         WinEvent.UnregisterListener(WinTriggered);
+        LoseEvent.UnregisterListener(LostTriggered);
+
     }
 }

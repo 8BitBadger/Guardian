@@ -6,7 +6,7 @@ public class Shoot : Node2D
     //Refference to tanks KinematicBody2D
     KinematicBody2D tankBody;
 
-    bool missileUpgrade = false;
+    //bool missileUpgrade = false;
     //Used to show the bullet path when the gun is fired
     //Line2D traceLine;
     //The position were the ray cast hit
@@ -14,8 +14,8 @@ public class Shoot : Node2D
     //Timer used to time the flash of hte bullet
     //Timer traceTimer;
 
-    PackedScene missileScene = new PackedScene();
-    Node missile;
+    //PackedScene missileScene = new PackedScene();
+    //Node missile;
 
     //We need a line rendered to show the path of the projectile
     //We need to cas a ray to the mouse coordinates
@@ -43,33 +43,43 @@ public class Shoot : Node2D
         tankBody = GetNode<KinematicBody2D>("../../../../Player");
         //Connect to the input manager to read the mouses click event
         GetNode<InputManager>("../../../../InputManager").Connect("leftMouseClicked", this, nameof(Fire));
-        missileScene = ResourceLoader.Load("res://Scenes/Missile.tscn") as PackedScene;
+        //missileScene = ResourceLoader.Load("res://Scenes/Missile.tscn") as PackedScene;
 
-        MissilePickupEvent.RegisterListener(SetMissileUpgrade);
+        //MissilePickupEvent.RegisterListener(SetMissileUpgrade);
 
     }
     private void Fire()
     {
+        /*
         if (missileUpgrade)
         {
             missile = missileScene.Instance();
-            ((Node2D)missile).Rotation = Rotation;
-            AddChild(missile);
+
+            if (((Missile)missile).HasMethod("Start"))
+            {
+                //((Missile)missile).Start(this.Transform, null);
+                //((Missile)missile).Start(GetNode<Node2D>("../../../../../Main").Transform, null);
+            }
+            Node2D tempNode = GetNode<Node2D>("../../../../../Main/MissileContainer");
+            tempNode.AddChild(missile);
+            //AddChild(missile);
 
         }
         else
+        {*/
+        //Get a snapshot of the physics state of he world at this moment
+        Physics2DDirectSpaceState worldState = GetWorld2d().DirectSpaceState;
+        //Get the raycast hits and store them in a dictionary
+        Godot.Collections.Dictionary hits = worldState.IntersectRay(GlobalPosition, GetGlobalMousePosition(), new Godot.Collections.Array { tankBody }, tankBody.CollisionMask);
+        //Check if there was a hit
+        if (hits.Count > 0)
         {
-            //Get a snapshot of the physics state of he world at this moment
-            Physics2DDirectSpaceState worldState = GetWorld2d().DirectSpaceState;
-            //Get the raycast hits and store them in a dictionary
-            Godot.Collections.Dictionary hits = worldState.IntersectRay(GlobalPosition, GetGlobalMousePosition(), new Godot.Collections.Array { tankBody }, tankBody.CollisionMask);
-            //Check if there was a hit
-            if (hits.Count > 0)
-            {
 
-                //Change the line2d end position if there was a hit
-                //hitPos = (Vector2)hits["position"];
-                if (hits.Contains("collider"))
+            //Change the line2d end position if there was a hit
+            //hitPos = (Vector2)hits["position"];
+            if (hits.Contains("collider"))
+            {
+                if (((Node)hits["collider"]).IsInGroup("Enemies"))
                 {
                     UnitHitEvent uhei = new UnitHitEvent();
                     uhei.attacker = (Node2D)Owner;
@@ -79,18 +89,19 @@ public class Shoot : Node2D
                     uhei.FireEvent();
                 }
             }
-            //Set the start and end of the line2D and then make it visible
-            //traceLine.Points = new Vector2[] {Vector2.Zero, hitPos };
-            //traceLine.Visible = true;
-            //traceTimer.Start();
         }
+        //Set the start and end of the line2D and then make it visible
+        //traceLine.Points = new Vector2[] {Vector2.Zero, hitPos };
+        //traceLine.Visible = true;
+        //traceTimer.Start();
+        //}
 
     }
 
-    private void SetMissileUpgrade(MissilePickupEvent mpe)
-    {
-        missileUpgrade = mpe.missileUpgrade;
-    }
+    //private void SetMissileUpgrade(MissilePickupEvent mpe)
+    //{
+    //    missileUpgrade = mpe.missileUpgrade;
+    //}
     //private void HideTrace()
     //{
     //traceLine.Visible = false;

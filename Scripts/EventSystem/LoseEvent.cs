@@ -5,6 +5,6 @@ namespace EventCallback
 {
     public class LoseEvent : Event<LoseEvent>
     {
-        public bool loast;
+        public bool lost;
     }
 }

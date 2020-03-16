@@ -1,10 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scripts/Health.cs" type="Script" id=1]
-[ext_resource path="res://Sprites/City.png" type="Texture" id=2]
-
-[sub_resource type="CircleShape2D" id=1]
-radius = 39.0187
+[ext_resource path="res://Sprites/Crystal1.png" type="Texture" id=2]
 
 [node name="Crystal" type="KinematicBody2D" groups=[
 "Crystal",
@@ -17,11 +14,12 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CollShape" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
-
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -7.5 )
 texture = ExtResource( 2 )
+
+[node name="CollShape" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -53.5874, 21.4148, -42.3708, 41.4094, 28.3419, 46.2861, 38.583, 47.2615, 49.3119, 36.0449, 50.7749, 27.7545, 48.049, 9.9873, 51.7502, -7.8457, 44.9229, -35.6431, 35.1693, -42.4706, 28.3419, -53.1993, 13.7117, -58.5638, -4.81995, -57.1008, -5.79529, -50.761, -35.0558, -49.298, -39.4448, -44.9089, -43.3462, -36.1307, -32.6174, -15.1608, -49.1982, 6.78455, -55.5381, 15.075 )
 
 [node name="Health" type="Node2D" parent="."]
 script = ExtResource( 1 )

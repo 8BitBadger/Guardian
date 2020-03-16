@@ -4,7 +4,7 @@ using System;
 public class Menu : Node2D
 {
     [Export]
-    int speed = 50;
+    int speed = 10;
     Sprite background;
     //Check where to move the background to
     bool moveRight = true;
@@ -19,11 +19,12 @@ public class Menu : Node2D
     {
         if (background.Position.x <= 0)
         {
-            moveRight = false;
+            SwingMovement();
         }
         else if (background.Position.x >= 1281)
         {
-            moveRight = true;
+            SwingMovement();
+
         }
         if (moveRight)
         {
@@ -33,8 +34,9 @@ public class Menu : Node2D
         {
             background.Position = new Vector2(background.Position.x + speed * delta, background.Position.y);
         }
-
-        
-
+    }
+    private void SwingMovement()
+    {
+        moveRight = !moveRight;
     }
 }

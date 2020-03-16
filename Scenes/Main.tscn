@@ -8,3 +8,5 @@ script = ExtResource( 2 )
 
 [node name="InputManager" type="Node2D" parent="."]
 script = ExtResource( 1 )
+
+[node name="MissileContainer" type="Node2D" parent="."]
