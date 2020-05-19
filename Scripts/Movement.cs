@@ -8,8 +8,6 @@ public class Movement : KinematicBody2D
     public Vector2 velocity = new Vector2();
     public override void _Ready()
     {
-        //Connect to the input Manager
-        GetNode<Node2D>("../InputManager").Connect("upPressed", this, nameof(UpPressed));
     }
 
     public void GetInput()
@@ -24,9 +22,6 @@ public class Movement : KinematicBody2D
             velocity.y += 1;
         if (Input.IsActionPressed("up"))
             velocity.y -= 1;
-    }
-    private void UpPressed()
-    {
     }
     public override void _PhysicsProcess(float delta)
     {
